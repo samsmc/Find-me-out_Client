@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Switch } from "react-router-dom";
@@ -13,23 +13,18 @@ import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import UserDetails from "./components/UserDetails";
 
-
-
 function App() {
   return (
     <AuthProvider>
-      <div className="container">
-        <Navbar />
+      <Navbar />
 
-        <Switch>
-          <Home exact path="/" component={Home} />
-          <AnonRoute exact path="/signup" component={Signup} />
-          <AnonRoute exact path="/login" component={Login} />
-          <PrivateRoute exact path='/user/userDetail' component={UserDetails} />
-          <PrivateRoute exact path="/private" component={UserAccount} />
-          
-        </Switch>
-      </div>
+      <Switch>
+        <Home exact path="/" component={Home} />
+        <AnonRoute exact path="/signup" component={Signup} />
+        <AnonRoute exact path="/login" component={Login} />
+        <PrivateRoute exact path="/user/userDetail" component={UserDetails} />
+        <PrivateRoute exact path="/private" component={UserAccount} />
+      </Switch>
     </AuthProvider>
   );
 }
