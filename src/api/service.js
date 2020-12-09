@@ -19,10 +19,10 @@ class Service {
         
       }
     };
-    saveNewEvent = async (newEvent) => {
+    saveNewEvent = async (newPhoto) => {
      
       try {
-        const res = await this.service.post("/components/NewEventForm", newEvent);
+        const res = await this.service.post("/components/userProfilePhoto", newPhoto);
         return res.data;
       } catch (error) {
         
@@ -30,7 +30,7 @@ class Service {
     };
     getEvents = async () => {
         try {
-            const res = await this.service.get("/EventsLists")
+            const res = await this.service.get("/UserDetails")
             
             return res.data
         } catch (error) {

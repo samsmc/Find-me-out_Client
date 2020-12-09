@@ -20,7 +20,7 @@ class TheNavbar extends Component {
             <Link to={"/"}>
               <img
                 alt="Logo"
-                src="./images/LogoFMO.png"
+                src="https://res.cloudinary.com/mscsam/image/upload/v1607444982/LogoFMO_bprcp6.png"
                 width="85"
                 height="80"
               />
@@ -48,7 +48,7 @@ class TheNavbar extends Component {
                 <Link to={"/private"}>
                   <img
                     alt="user-icon"
-                    src="./images/icons8-test-account-50.png"
+                    src="https://res.cloudinary.com/mscsam/image/upload/v1607444982/icons8-test-account-50_i0v3ow.png"
                   /></Link>
                 </Nav.Link>
               </>

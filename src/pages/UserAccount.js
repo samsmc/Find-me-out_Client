@@ -40,7 +40,7 @@ class UserAccount extends Component {
             width={150}
             height={150}
             alt="avatar_img"
-            src={this.state.userInfo.userPhoto}
+            src={this.state.userInfo.photo}
             className="circle-img"
             style={{
               backgroundImage:
@@ -53,7 +53,7 @@ class UserAccount extends Component {
 
         <h3>
           Here you can personalize your profile and check all the information
-          you want to display on your welcoming page.
+          you want to display on your public profile.
         </h3>
         <br></br>
 
@@ -63,7 +63,9 @@ class UserAccount extends Component {
           </Link>
           <p>Update your details.</p>
           <br></br>
+          <Link to="/user/PublicProfile">
           <button className="button" type="submit"> View Public Profile </button>
+          </Link>
         </div>
       </div>
     );

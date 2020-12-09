@@ -1,52 +1,79 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 import service from "../api/service";
 
-const UserDetails = (props) => {
-  const [photo, setPhoto] = useState();
-  const [name, setname] = useState();
-  const [position, setPosition] = useState();
-  const [technologies, setTechnologies] = useState();
-  const [channels, setChannels] = useState();
-  const [uploadCV, setUploadCV] = useState();
+class UserDetails extends Component {
+  constructor() {
+    super();
 
-  const submitChanges = async (event) => {
-    event.preventDefault();
-    /* const formData = new FormData() */
-    const response = await axios.put(
-      `${process.env.REACT_APP_API_URL}/user/update-user/${props.user._id}`,
-      { photo, name, position, technologies, uploadCV, channels }
-    );
-    // return response
-    props.history.push("/private");
-    /*  const json = await response.json() */
-    /* alert(JSON.stringify(response)) */
+    this.state = {
+      userToCreate: {
+        photo: "",
+        name: "",
+        position: "",
+        technologies: "",
+        uploadCV: "",
+        channels: "",
+      },
+    };
+  }
+
+  handleInput = (event) => {
+    const { name, value } = event.target;
+    this.setState ({ userToCreate:{ [name]: value }
+    });
+  }
+
+  handleChannelCheck = (event) => {
+    const value = event.target.checked;
+    this.setState({ hasChannels: value });
   };
 
-  const handleFileUpload = async (e) => {
-    const uploadData = new FormData();
-    // photo => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
-    uploadData.append("photo", e.target.files[0]);
+  handleSubmit = (event) => {
+    event.preventDefault();
 
+    axios
+      .put(
+        `${process.env.REACT_APP_API_URL}/user/update-user/${this.props.user._id}`,
+        this.state.userToCreate,
+        { withCredentials: true }
+      )
+      .then((response) => {
+        this.props.history.push("/user/PublicProfile");
+      });
+  };
+
+  handleFileUpload = async (e) => {
+    const uploadData = new FormData();
+    uploadData.append("photo", e.target.files[0]);
     try {
       const res = await service.handleUpload(uploadData);
 
-      // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-      setPhoto(res.secure_url);
+      this.setState({photo:res.secure_url});
     } catch (error) {
       console.log("Error while uploading the file: ", error);
     }
   };
 
-  return (
-    <div className="container">
-      <section id="content">
-        <div className="content-view">
-          <h1 className="heading-large horizontal-center">Your details</h1>
+  render() {
+    return (
+      <div className="container">
+        <div className="left-container">
+          <img
+            alt="img"
+            src="https://res.cloudinary.com/mscsam/image/upload/v1607527019/userDetails_l2wncr.jpg"
+            className="fas fa-paw"
+            style={{ maxWidth: 700 }}
+          />
+        </div>
 
-          <form onSubmit={submitChanges}>
+        <div className="right-container">
+          <h1>
+            Ensure you fill this form with all the information you want to be
+            seen!{" "}
+          </h1>
+          <form onSubmit={this.handleSubmit}>
             <div className="box-form-fields js-forms">
               <ul>
                 <li>
@@ -61,7 +88,7 @@ const UserDetails = (props) => {
                     type="file"
                     name="photo"
                     value={""}
-                    onChange={handleFileUpload}
+                    onChange={this.handleFileUpload}
                   />
                 </div>
                 <li>
@@ -77,8 +104,8 @@ const UserDetails = (props) => {
                       data-max={30}
                       type="text"
                       name="name"
-                      value={name || ""}
-                      onChange={(e) => setname(e.target.value)}
+                      value={this.state.name}
+                      onChange={this.handleInput}
                     />
                   </div>
                 </li>
@@ -99,8 +126,8 @@ const UserDetails = (props) => {
                       data-max={30}
                       type="text"
                       name="position"
-                      value={position || ""}
-                      onChange={(e) => setPosition(e.target.value)}
+                      value={this.state.position}
+                      onChange={this.handleInput}
                     />
                   </div>
                 </li>
@@ -115,15 +142,15 @@ const UserDetails = (props) => {
                   </div>
 
                   <div className="row right">
-                    <input
+                    <textarea
                       id="standard_submission_submission_sitename"
                       className="text-input js-validate_characters"
                       data-msg="form.characters_remaining"
-                      data-max={30}
+                      data-max={185}
                       type="text"
                       name="technologies"
-                      value={technologies || ""}
-                      onChange={(e) => setTechnologies(e.target.value)}
+                      value={this.state.technologies}
+                      onChange={this.handleInput}
                     />
                   </div>
                 </li>
@@ -134,12 +161,124 @@ const UserDetails = (props) => {
                       <strong>Channels</strong>
                     </label>
                   </div>
+
+                  <div className="form-check form-check-inline">
+                    <input
+                      placeholder="Linkedin Profile Link"
+                      className="form-check-input"
+                      type="radio"
+                      name="Linkedin"
+                      id="optionLinkedin"
+                    />
+                    <label className="form-check-label">Linkedin</label>
+                  </div>
+
                   <div className="row right">
                     <input
                       type="text"
                       name="channels"
-                      value={channels || ""}
-                      onChange={(e) => setChannels(e.target.value)}
+                      value={this.state.channels}
+                      onChange={this.handleInput}
+                    />
+                  </div>
+
+                  <div className="form-check form-check-inline">
+                    <input
+                      placeholder="Github Profile Link"
+                      className="form-check-input"
+                      type="radio"
+                      name="Github"
+                      id="optionGithub"
+                    />
+                    <label className="form-check-label">Github</label>
+                  </div>
+
+                  <div className="row right">
+                    <input
+                      type="text"
+                      name="channels"
+                      value={this.state.channels}
+                      onChange={this.handleInput}
+                    />
+                  </div>
+
+                  <div className="form-check form-check-inline">
+                    <input
+                      placeholder="Stack Overflow Profile Link"
+                      className="form-check-input"
+                      type="radio"
+                      name="Stack"
+                      id="optionStack"
+                    />
+                    <label className="form-check-label">Stack Overflow</label>
+                  </div>
+
+                  <div className="row right">
+                    <input
+                      type="text"
+                      name="channels"
+                      value={this.state.channels}
+                      onChange={this.handleInput}
+                    />
+                  </div>
+
+                  <div className="form-check form-check-inline">
+                    <input
+                      placeholder="Medium Profile Link"
+                      className="form-check-input"
+                      type="radio"
+                      name="Medium"
+                      id="optionMedium"
+                    />
+                    <label className="form-check-label">Medium</label>
+                  </div>
+
+                  <div className="row right">
+                    <input
+                      type="text"
+                      name="channels"
+                      value={this.state.channels}
+                      onChange={this.handleInput}
+                    />
+                  </div>
+
+                  <div className="form-check form-check-inline">
+                    <input
+                      placeholder="Reddit Profile Link"
+                      className="form-check-input"
+                      type="radio"
+                      name="Reddit"
+                      id="optionReddit"
+                    />
+                    <label className="form-check-label">Reddit</label>
+                  </div>
+
+                  <div className="row right">
+                    <input
+                      type="text"
+                      name="channels"
+                      value={this.state.channels}
+                      onChange={this.handleInput}
+                    />
+                  </div>
+
+                  <div className="form-check form-check-inline">
+                    <input
+                      placeholder="CodePen Profile Link"
+                      className="form-check-input"
+                      type="radio"
+                      name="CodePen"
+                      id="optionCodePen"
+                    />
+                    <label className="form-check-label">CodePen</label>
+                  </div>
+
+                  <div className="row right">
+                    <input
+                      type="text"
+                      name="channels"
+                      value={this.state.channels}
+                      onChange={this.handleInput}
                     />
                   </div>
                 </li>
@@ -157,7 +296,7 @@ const UserDetails = (props) => {
                     type="file"
                     name="uploadCV"
                     value={""}
-                    onChange={handleFileUpload}
+                    onChange={this.handleFileUpload}
                   />
                 </div>
               </ul>
@@ -168,9 +307,9 @@ const UserDetails = (props) => {
             </button>
           </form>
         </div>
-      </section>
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 
 export default withAuth(UserDetails);

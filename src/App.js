@@ -12,6 +12,7 @@ import AuthProvider from "./lib/AuthProvider";
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import UserDetails from "./components/UserDetails";
+import PublicProfile from "./components/PublicProfile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <AnonRoute exact path="/login" component={Login} />
         <PrivateRoute exact path="/user/userDetail" component={UserDetails} />
         <PrivateRoute exact path="/private" component={UserAccount} />
+        <PublicProfile exact path="/user/PublicProfile" component={PublicProfile} />
       </Switch>
     </AuthProvider>
   );
