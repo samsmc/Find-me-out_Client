@@ -44,11 +44,10 @@ class UserAccount extends Component {
             className="circle-img"
             style={{
               backgroundImage:
-                "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'" }}
+                "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'",
+            }}
           />
-          <h4 className="info">
-            {this.state.userInfo.email}
-          </h4>
+          <h4 className="info">{this.state.userInfo.email}</h4>
         </div>
 
         <h3>
@@ -63,8 +62,10 @@ class UserAccount extends Component {
           </Link>
           <p>Update your details.</p>
           <br></br>
-          <Link to="/user/PublicProfile">
-          <button className="button" type="submit"> View Public Profile </button>
+          <Link to={`/user/${this.props.user._id}`}>
+            <div>
+              <strong type="button">View Public Profile</strong>
+            </div>
           </Link>
         </div>
       </div>

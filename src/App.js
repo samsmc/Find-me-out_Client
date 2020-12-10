@@ -25,7 +25,7 @@ function App() {
         <AnonRoute exact path="/login" component={Login} />
         <PrivateRoute exact path="/user/userDetail" component={UserDetails} />
         <PrivateRoute exact path="/private" component={UserAccount} />
-        <PublicProfile exact path="/user/PublicProfile" component={PublicProfile} />
+        <PublicProfile exact path="/user/:id" component={PublicProfile} />
       </Switch>
     </AuthProvider>
   );

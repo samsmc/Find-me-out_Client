@@ -47,7 +47,7 @@ class UserDetails extends Component {
         { withCredentials: true }
       )
       .then((response) => {
-        this.props.history.push("/user/PublicProfile");
+        this.props.history.push(`/user/${this.props.user._id}`);
       });
   };
 
@@ -69,13 +69,17 @@ class UserDetails extends Component {
         withCredentials: true,
       })
       .then((res) => {
-        this.setState({ userToCreate: res.data });
+        this.setState({
+          name: res.data.name,
+          photo: res.data.photo,
+          position: res.data.position,
+          technologies: res.data.technologies,
+          uploadCV: res.data.uploadCV,
+        });
       });
   }
 
   render() {
-    console.log(this.state.userToCreate);
-
     return (
       <div className="container">
         <div className="left-container">
@@ -90,7 +94,7 @@ class UserDetails extends Component {
         <div className="right-container">
           <h1>
             Ensure you fill this form with all the information you want to be
-            seen!{" "}
+            seen!
           </h1>
           <form onSubmit={this.handleSubmit}>
             <div className="box-form-fields js-forms">
@@ -101,6 +105,17 @@ class UserDetails extends Component {
                       <strong>Profile picture</strong>
                     </label>
                   </div>
+                  <img
+                    width={150}
+                    height={150}
+                    alt="avatar_img"
+                    src={this.state.photo}
+                    className="circle-img"
+                    style={{
+                      backgroundImage:
+                        "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'",
+                    }}
+                  />
                 </li>
                 <div className="row right">
                   <input
