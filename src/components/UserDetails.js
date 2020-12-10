@@ -3,40 +3,47 @@ import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 import service from "../api/service";
 
-class UserDetails extends Component {
-  constructor() {
-    super();
+//salvar os dados na BD
+//imprimir os valores existentes dentro do input
+//check buttons and input links
+//create a function to upload the CV
 
-    this.state = {
-      userToCreate: {
-        photo: "",
-        name: "",
-        position: "",
-        technologies: "",
-        uploadCV: "",
-        channels: "",
-      },
-    };
-  }
+class UserDetails extends Component {
+  state = {
+    photo: "",
+    name: "",
+    position: "",
+    technologies: "",
+    uploadCV: "",
+    channels: {
+      linkedin: false,
+      github: false,
+      stack: false,
+      medium: false,
+      reddit: false,
+      codePen: false,
+    },
+  };
 
   handleInput = (event) => {
     const { name, value } = event.target;
-    this.setState ({ userToCreate:{ [name]: value }
-    });
-  }
+    this.setState({ [name]: value });
+  };
 
   handleChannelCheck = (event) => {
-    const value = event.target.checked;
-    this.setState({ hasChannels: value });
+    const { name, checked } = event.target;
+    this.setState({ channels: { name: !checked } });
+    console.log(name, checked);
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
+    console.log(this.state);
 
     axios
       .put(
         `${process.env.REACT_APP_API_URL}/user/update-user/${this.props.user._id}`,
-        this.state.userToCreate,
+        this.state,
         { withCredentials: true }
       )
       .then((response) => {
@@ -50,13 +57,25 @@ class UserDetails extends Component {
     try {
       const res = await service.handleUpload(uploadData);
 
-      this.setState({photo:res.secure_url});
+      this.setState({ photo: res.secure_url });
     } catch (error) {
       console.log("Error while uploading the file: ", error);
     }
   };
 
+  componentDidMount() {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/user/${this.props.user._id}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        this.setState({ userToCreate: res.data });
+      });
+  }
+
   render() {
+    console.log(this.state.userToCreate);
+
     return (
       <div className="container">
         <div className="left-container">
@@ -99,6 +118,7 @@ class UserDetails extends Component {
                   </div>
                   <div className="row right">
                     <input
+                      //placeholder={this.state.userToCreate && this.state.usertoCreate.name}
                       className="text-input js-validate_characters"
                       data-msg="form.characters_remaining"
                       data-max={30}
@@ -166,8 +186,10 @@ class UserDetails extends Component {
                     <input
                       placeholder="Linkedin Profile Link"
                       className="form-check-input"
-                      type="radio"
-                      name="Linkedin"
+                      type="checkbox"
+                      name="linkedin"
+                      checked={this.state.channels.linkedin}
+                      onChange={this.handleChannelCheck}
                       id="optionLinkedin"
                     />
                     <label className="form-check-label">Linkedin</label>
@@ -176,8 +198,8 @@ class UserDetails extends Component {
                   <div className="row right">
                     <input
                       type="text"
-                      name="channels"
-                      value={this.state.channels}
+                      name="linkedinUrl"
+                      value={this.state.linkedinUrl}
                       onChange={this.handleInput}
                     />
                   </div>
@@ -186,8 +208,10 @@ class UserDetails extends Component {
                     <input
                       placeholder="Github Profile Link"
                       className="form-check-input"
-                      type="radio"
-                      name="Github"
+                      type="checkbox"
+                      name="github"
+                      checked={this.state.channels.github}
+                      onChange={this.handleChannelCheck}
                       id="optionGithub"
                     />
                     <label className="form-check-label">Github</label>
@@ -196,8 +220,8 @@ class UserDetails extends Component {
                   <div className="row right">
                     <input
                       type="text"
-                      name="channels"
-                      value={this.state.channels}
+                      name="githubUrl"
+                      value={this.state.githubUrl}
                       onChange={this.handleInput}
                     />
                   </div>
@@ -206,8 +230,10 @@ class UserDetails extends Component {
                     <input
                       placeholder="Stack Overflow Profile Link"
                       className="form-check-input"
-                      type="radio"
-                      name="Stack"
+                      type="checkbox"
+                      name="stack"
+                      checked={this.state.channels.stack}
+                      onChange={this.handleChannelCheck}
                       id="optionStack"
                     />
                     <label className="form-check-label">Stack Overflow</label>
@@ -216,8 +242,8 @@ class UserDetails extends Component {
                   <div className="row right">
                     <input
                       type="text"
-                      name="channels"
-                      value={this.state.channels}
+                      name="stackUrl"
+                      value={this.state.stackUrl}
                       onChange={this.handleInput}
                     />
                   </div>
@@ -226,8 +252,10 @@ class UserDetails extends Component {
                     <input
                       placeholder="Medium Profile Link"
                       className="form-check-input"
-                      type="radio"
-                      name="Medium"
+                      type="checkbox"
+                      name="medium"
+                      checked={this.state.channels.medium}
+                      onChange={this.handleChannelCheck}
                       id="optionMedium"
                     />
                     <label className="form-check-label">Medium</label>
@@ -236,8 +264,8 @@ class UserDetails extends Component {
                   <div className="row right">
                     <input
                       type="text"
-                      name="channels"
-                      value={this.state.channels}
+                      name="mediumUrl"
+                      value={this.state.mediumUrl}
                       onChange={this.handleInput}
                     />
                   </div>
@@ -246,8 +274,10 @@ class UserDetails extends Component {
                     <input
                       placeholder="Reddit Profile Link"
                       className="form-check-input"
-                      type="radio"
-                      name="Reddit"
+                      type="checkbox"
+                      name="reddit"
+                      checked={this.state.channels.reddit}
+                      onChange={this.handleChannelCheck}
                       id="optionReddit"
                     />
                     <label className="form-check-label">Reddit</label>
@@ -256,8 +286,8 @@ class UserDetails extends Component {
                   <div className="row right">
                     <input
                       type="text"
-                      name="channels"
-                      value={this.state.channels}
+                      name="redditUrl"
+                      value={this.state.redditUrl}
                       onChange={this.handleInput}
                     />
                   </div>
@@ -266,8 +296,10 @@ class UserDetails extends Component {
                     <input
                       placeholder="CodePen Profile Link"
                       className="form-check-input"
-                      type="radio"
-                      name="CodePen"
+                      type="checkbox"
+                      name="codePen"
+                      checked={this.state.channels.codePen}
+                      onChange={this.handleChannelCheck}
                       id="optionCodePen"
                     />
                     <label className="form-check-label">CodePen</label>
@@ -276,14 +308,13 @@ class UserDetails extends Component {
                   <div className="row right">
                     <input
                       type="text"
-                      name="channels"
-                      value={this.state.channels}
+                      name="codePenUrl"
+                      value={this.state.codePenUrl}
                       onChange={this.handleInput}
                     />
                   </div>
                 </li>
 
-                {/* //create a function to upload the CV */}
                 <li>
                   <div className="row left">
                     <label className="asterisk-required">

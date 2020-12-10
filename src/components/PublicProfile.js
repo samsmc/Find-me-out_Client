@@ -5,13 +5,13 @@ import axios from 'axios';
 
 class PublicProfile extends Component {
 
-    constructor() {
+/*     constructor() {
         super()
 
         this.state = {
-            event: {}
+            user: {}
         }
-    }
+    } */
 
 
     /* componentDidMount() {
@@ -22,19 +22,20 @@ class PublicProfile extends Component {
             .get((`${process.env.REACT_APP_API_URL}/user/${user.id}`), { withCredentials: true })
             .then(res => {
                 
-                this.setState({ event: res.data });
+                this.setState({ user: res.data });
             });
     } */
 
 
     render() {
-        const {  photo, name, position, technologies, uploadCV, channels } = this.state.event;
+        /* const {  photo, name, position, technologies, uploadCV, channels } = this.state.user; */
    
       
        
 
         return (
-            <div id="singleback">
+            <>
+         { /*   <div id="singleback">
                 <br></br>
                 <section id="content">
                     <div style={{ alignSelf: 'center', height: 400, width: 400, display: "flex", borderRadius: 50 }}>
@@ -65,11 +66,11 @@ class PublicProfile extends Component {
                         </div>
                     </div>
                 </section>
-            </div>
-
+            </div>*/}
+</>
         )
     }
-}
+} 
 
 
 export default PublicProfile;

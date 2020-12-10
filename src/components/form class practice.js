@@ -203,7 +203,7 @@ import service from "../api/service";
                     placeholder="Medium Profile Link"
                     className="form-check-input"
                     type="radio"
-                    name="Medium"
+                    name="medium"
                     id="optionMedium"
                   />
                   <label className="form-check-label">Medium</label>
