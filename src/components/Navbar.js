@@ -21,7 +21,7 @@ class TheNavbar extends Component {
               <img
                 alt="Logo"
                 src="https://res.cloudinary.com/mscsam/image/upload/v1607444982/LogoFMO_bprcp6.png"
-                width="85"
+                width="80"
                 height="80"
               />
             </Link>

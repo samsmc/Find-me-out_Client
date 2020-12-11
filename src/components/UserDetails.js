@@ -14,7 +14,7 @@ class UserDetails extends Component {
     position: "",
     technologies: "",
     uploadCV: "",
-    linkedin: {linkedinUrl: "", check: false},
+    linkedin: { linkedinUrl: "", check: false },
     github: false,
     stack: false,
     medium: false,
@@ -84,274 +84,215 @@ class UserDetails extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="left-container">
-          <img
-            alt="img"
-            src="https://res.cloudinary.com/mscsam/image/upload/v1607527019/userDetails_l2wncr.jpg"
-            className="fas fa-paw"
-            style={{ maxWidth: 700 }}
-          />
-        </div>
-
-        <div className="right-container">
-          <h1>
+      <div>
+        <div className="container">
+          <h3 className="form-title">
             Ensure you fill this form with all the information you want to be
             seen!
-          </h1>
+          </h3>
           <form onSubmit={this.handleSubmit}>
-            <div className="box-form-fields js-forms">
-              <ul>
-                <li>
-                  <div className="row left">
-                    <label className="asterisk-required">
-                      <strong>Profile picture</strong>
-                    </label>
-                  </div>
-                  <img
-                    width={150}
-                    height={150}
-                    alt="avatar_img"
-                    src={this.state.photo}
-                    className="circle-img"
-                    style={{
-                      backgroundImage:
-                        "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'",
-                    }}
-                  />
-                </li>
-                <div className="row right">
-                  <input
-                    type="file"
-                    name="photo"
-                    value={""}
-                    onChange={this.handleFileUpload}
-                  />
-                </div>
-                <li>
-                  <div className="row left">
-                    <label className="asterisk-required">
-                      <strong>Name</strong>
-                    </label>
-                  </div>
-                  <div className="row right">
-                    <input
-                      //placeholder={this.state.userToCreate && this.state.usertoCreate.name}
-                      className="text-input js-validate_characters"
-                      data-msg="form.characters_remaining"
-                      data-max={30}
-                      type="text"
-                      name="name"
-                      value={this.state.name}
-                      onChange={this.handleInput}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div className="row left">
-                    <label
-                      htmlFor="standard_submission_submission_designBy"
-                      className="asterisk-required"
-                    >
-                      <strong>Position</strong>
-                    </label>
-                  </div>
-                  <div className="row right">
-                    <input
-                      id="standard_submission_submission_sitename"
-                      className="text-input js-validate_characters"
-                      data-msg="form.characters_remaining"
-                      data-max={30}
-                      type="text"
-                      name="position"
-                      value={this.state.position}
-                      onChange={this.handleInput}
-                    />
-                  </div>
-                </li>
-                <li>
-                  <div className="row left">
-                    <label
-                      htmlFor="standard_submission_submission_designerUrl"
-                      className="asterisk-required"
-                    >
-                      <strong>Technologies</strong>
-                    </label>
-                  </div>
+            <div>
+              <div>
+                <h6>Profile picture</h6>
+              </div>
+              <img
+                width={150}
+                height={150}
+                alt="avatar_img"
+                src={this.state.photo}
+                className="circle-img"
+                style={{
+                  backgroundImage:
+                    "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'",
+                }}
+              />
 
-                  <div className="row right">
-                    <textarea
-                      id="standard_submission_submission_sitename"
-                      className="text-input js-validate_characters"
-                      data-msg="form.characters_remaining"
-                      data-max={185}
-                      type="text"
-                      name="technologies"
-                      value={this.state.technologies}
-                      onChange={this.handleInput}
-                    />
-                  </div>
-                </li>
+              <div className="form-group">
+                <input
+                  type="file"
+                  name="photo"
+                  value={""}
+                  onChange={this.handleFileUpload}
+                />
+              </div>
 
-                <li>
-                  <div className="row left">
-                    <label className="asterisk-required">
-                      <strong>Channels</strong>
-                    </label>
-                  </div>
+              <div className="form-group">
+                <h6>Name</h6>
+                <input
+                  type="text"
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="linkedin"
-                      checked={this.state.linkedin.check}
-                      onChange={this.handleChannelCheck}
-                      id="optionLinkedin"
-                    />
-                    <label className="form-check-label">Linkedin</label>
-                  </div>
+              <div className="form-group">
+                <h6>Position</h6>
+                <input
+                  data-msg="form.characters_remaining"
+                  data-max={30}
+                  type="text"
+                  name="position"
+                  value={this.state.position}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="row right">
-                    <input
-                      placeholder="URL profile"
-                      type="text"
-                      name="linkedinUrl"
-                      value={this.state.linkedin.linkedinUrl}
-                      onChange={this.handleInput}
-                    />
-                  </div>
+              <div className="form-group">
+                <h6> Technologies</h6>
+                <input
+                  data-msg="form.characters_remaining"
+                  data-max={185}
+                  type="text"
+                  name="technologies"
+                  value={this.state.technologies}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="github"
-                      checked={this.state.github.check}
-                      onChange={this.handleChannelCheck}
-                      id="optionGithub"
-                    />
-                    <label className="form-check-label">Github</label>
-                  </div>
+              <h6 className="form-group">
+                <b>Channels:</b>
+              </h6>
 
-                  <div className="row right">
-                    <input
-                      placeholder="URL profile"
-                      type="text"
-                      name="githubUrl"
-                      value={this.state.githubUrl}
-                      onChange={this.handleInput}
-                    />
-                  </div>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  name="linkedin"
+                  checked={this.state.linkedin.check}
+                  onChange={this.handleChannelCheck}
+                  id="optionLinkedin"
+                />
+              </div>
+              <div>
+                <h6>Linkedin</h6>
+                <input
+                className="form-control"
+                  placeholder="URL profile"
+                  type="text"
+                  name="linkedinUrl"
+                  value={this.state.linkedin.linkedinUrl}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="stack"
-                      checked={this.state.stack.check}
-                      onChange={this.handleChannelCheck}
-                      id="optionStack"
-                    />
-                    <label className="form-check-label">Stack Overflow</label>
-                  </div>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  name="github"
+                  checked={this.state.github.check}
+                  onChange={this.handleChannelCheck}
+                  id="optionGithub"
+                />
+              </div>
+              <div>
+                <h6>Github</h6>
+                <input
+                className="form-control"
+                  placeholder="URL profile"
+                  type="text"
+                  name="githubUrl"
+                  value={this.state.githubUrl}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="row right">
-                    <input
-                      placeholder="URL profile"
-                      type="text"
-                      name="stackUrl"
-                      value={this.state.stackUrl}
-                      onChange={this.handleInput}
-                    />
-                  </div>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  name="stack"
+                  checked={this.state.stack.check}
+                  onChange={this.handleChannelCheck}
+                  id="optionStack"
+                />
+              </div>
+              <div>
+                <h6>Stack Overflow</h6>
+                <input
+                className="form-control"
+                  placeholder="URL profile"
+                  type="text"
+                  name="stackUrl"
+                  value={this.state.stackUrl}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="medium"
-                      checked={this.state.medium.check}
-                      onChange={this.handleChannelCheck}
-                      id="optionMedium"
-                    />
-                    <label className="form-check-label">Medium</label>
-                  </div>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  name="medium"
+                  checked={this.state.medium.check}
+                  onChange={this.handleChannelCheck}
+                  id="optionMedium"
+                />
+              </div>
+              <div>
+                <h6>Medium</h6>
+                <input
+                className="form-control"
+                  placeholder="URL profile"
+                  type="text"
+                  name="mediumUrl"
+                  value={this.state.mediumUrl}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="row right">
-                    <input
-                      placeholder="URL profile"
-                      type="text"
-                      name="mediumUrl"
-                      value={this.state.mediumUrl}
-                      onChange={this.handleInput}
-                    />
-                  </div>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  name="reddit"
+                  checked={this.state.reddit.check}
+                  onChange={this.handleChannelCheck}
+                  id="optionReddit"
+                />
+              </div>
+              <div>
+                <h6>Reddit</h6>
+                <input
+                className="form-control"
+                  placeholder="URL profile"
+                  type="text"
+                  name="redditUrl"
+                  value={this.state.redditUrl}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="reddit"
-                      checked={this.state.reddit.check}
-                      onChange={this.handleChannelCheck}
-                      id="optionReddit"
-                    />
-                    <label className="form-check-label">Reddit</label>
-                  </div>
+              <div className="form-group">
+                <input
+                  type="checkbox"
+                  name="codePen"
+                  checked={this.state.codePen.check}
+                  onChange={this.handleChannelCheck}
+                  id="optionCodePen"
+                />
+              </div>
+              <div>
+                <h6>CodePen</h6>
+                <input
+                className="form-control"
+                  placeholder="URL profile"
+                  type="text"
+                  name="codePenUrl"
+                  value={this.state.codePenUrl}
+                  onChange={this.handleInput}
+                />
+              </div>
 
-                  <div className="row right">
-                    <input
-                      
-                      type="text"
-                      name="redditUrl"
-                      value={this.state.redditUrl}
-                      onChange={this.handleInput}
-                    />
-                  </div>
+              <br></br>
 
-                  <div className="form-check form-check-inline">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      name="codePen"
-                      checked={this.state.codePen.check}
-                      onChange={this.handleChannelCheck}
-                      id="optionCodePen"
-                    />
-                    <label className="form-check-label">CodePen</label>
-                  </div>
-
-                  <div className="row right">
-                    <input
-                      
-                      type="text"
-                      name="codePenUrl"
-                      value={this.state.codePenUrl}
-                      onChange={this.handleInput}
-                    />
-                  </div>
-                </li>
-
-                <li>
-                  <div className="row left">
-                    <label className="asterisk-required">
-                      <strong>Upload CV</strong>
-                    </label>
-                  </div>
-                </li>
-                <div className="row right">
-                  <input
-                    type="file"
-                    name="uploadCV"
-                    value={""}
-                    onChange={this.handleFileUpload}
-                  />
-                </div>
-              </ul>
+              <div className="form-group">
+                <h6>Upload CV</h6>
+                <input
+                  type="file"
+                  name="uploadCV"
+                  value={""}
+                  onChange={this.handleFileUpload}
+                />
+              </div>
             </div>
-
-            <button className="button" type="submit">
+            <button className="btn-user " type="submit">
               UPDATE PROFILE
             </button>
           </form>

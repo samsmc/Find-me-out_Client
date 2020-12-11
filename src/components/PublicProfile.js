@@ -28,7 +28,6 @@ class PublicProfile extends Component {
           //codePen: { url: res.data.codePen.url, check: res.data.codePen},
         });
         console.log("userSTATEDATA", res.data);
-   
       });
   };
 
@@ -39,53 +38,64 @@ class PublicProfile extends Component {
   render() {
     const { user } = this.state;
     //console.log("USER-Render", {user});
-   
 
     return (
-      <div>
-        <div id="singleback">
-          <div>
-            <img alt="user-profile" src={user.photo} />
+      <section className="signup">
+        <div className="container-page">
+          <div className="signup-content">
+            <div className="signup-form">
+              <div>
+                <img alt="user-profile" src={user.photo} />
+              </div>
+              <div className="">
+                {/* <ul>
+                  <li>
+                    Nome: <b>{user.name}</b>
+                  </li>
+
+                  <li>
+                    Position: <b>{user.position}</b>
+                  </li>
+
+                  <li>
+                    technologies: <b>{user.technologies}</b>
+                  </li>
+
+                  <li>
+                    Linkedin: <b>{user.linkedin}</b>
+                  </li>
+                  <li>
+                    Github: <b>{user.github.url}</b>
+                  </li>
+                  <li>
+                    Stack Overflow: <b>{user.stack.url}</b>
+                  </li>
+                  <li>
+                    Medium: <b>{user.medium.url}</b>
+                  </li>
+                  <li>
+                    Reddit: <b>{user.reddit.url}</b>
+                  </li>
+                  <li>
+                    CodePen: <b>{user.codePen.url}</b>
+                  </li>
+                  <li>
+                    uploadCV: <b>{user.uploadCV}</b>
+                  </li>
+                </ul> */}
+              </div>
+              <div className="signup-image">
+                <figure>
+                  <img
+                    src="https://res.cloudinary.com/mscsam/image/upload/v1607711275/settings_rkqex1.jpg"
+                    alt="signup"
+                  />
+                </figure>
+              </div>
+            </div>
           </div>
-          <div className="">
-            <ul>
-              <li>
-                Nome: <b>{user.name}</b>
-              </li>
-
-              <li>
-                Position: <b>{user.position}</b>
-              </li>
-
-              <li>
-                technologies: <b>{user.technologies}</b>
-              </li>
-
-              <li>
-                Linkedin: <b>{user.linkedin}</b>
-              </li>
-              {/* <li>
-                Github: <b>{user.github.url}</b>
-              </li>
-              <li>
-                Stack Overflow: <b>{user.stack.url}</b>
-              </li>
-              <li>
-                Medium: <b>{user.medium.url}</b>
-              </li>
-              <li>
-                Reddit: <b>{user.reddit.url}</b>
-              </li>
-              <li>
-                CodePen: <b>{user.codePen.url}</b>
-              </li> */}
-              <li>
-                uploadCV: <b>{user.uploadCV}</b>
-              </li>
-            </ul>
-          </div>
-        </div> 
-      </div>
+        </div>
+      </section>
     );
   }
 }
