@@ -3,7 +3,6 @@ import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 import service from "../api/service";
 
-//salvar os dados na BD
 //imprimir os valores existentes dentro do input
 //check buttons and input links
 //create a function to upload the CV
@@ -15,14 +14,12 @@ class UserDetails extends Component {
     position: "",
     technologies: "",
     uploadCV: "",
-    channels: {
-      linkedin: false,
-      github: false,
-      stack: false,
-      medium: false,
-      reddit: false,
-      codePen: false,
-    },
+    linkedin: {linkedinUrl: "", check: false},
+    github: false,
+    stack: false,
+    medium: false,
+    reddit: false,
+    codePen: false,
   };
 
   handleInput = (event) => {
@@ -32,7 +29,7 @@ class UserDetails extends Component {
 
   handleChannelCheck = (event) => {
     const { name, checked } = event.target;
-    this.setState({ channels: { name: !checked } });
+    this.setState({ [name]: !checked });
     console.log(name, checked);
   };
 
@@ -75,6 +72,12 @@ class UserDetails extends Component {
           position: res.data.position,
           technologies: res.data.technologies,
           uploadCV: res.data.uploadCV,
+          linkedinUrl: res.data.linkedin.linkedinUrl,
+          githubUrl: res.data.githubUrl,
+          stackUrl: res.data.stackUrl,
+          mediumUrl: res.data.mediumUrl,
+          redditUrl: res.data.redditUrl,
+          codePenUrl: res.data.codePenUrl,
         });
       });
   }
@@ -199,11 +202,10 @@ class UserDetails extends Component {
 
                   <div className="form-check form-check-inline">
                     <input
-                      placeholder="Linkedin Profile Link"
                       className="form-check-input"
                       type="checkbox"
                       name="linkedin"
-                      checked={this.state.channels.linkedin}
+                      checked={this.state.linkedin.check}
                       onChange={this.handleChannelCheck}
                       id="optionLinkedin"
                     />
@@ -212,20 +214,20 @@ class UserDetails extends Component {
 
                   <div className="row right">
                     <input
+                      placeholder="URL profile"
                       type="text"
                       name="linkedinUrl"
-                      value={this.state.linkedinUrl}
+                      value={this.state.linkedin.linkedinUrl}
                       onChange={this.handleInput}
                     />
                   </div>
 
                   <div className="form-check form-check-inline">
                     <input
-                      placeholder="Github Profile Link"
                       className="form-check-input"
                       type="checkbox"
                       name="github"
-                      checked={this.state.channels.github}
+                      checked={this.state.github.check}
                       onChange={this.handleChannelCheck}
                       id="optionGithub"
                     />
@@ -234,6 +236,7 @@ class UserDetails extends Component {
 
                   <div className="row right">
                     <input
+                      placeholder="URL profile"
                       type="text"
                       name="githubUrl"
                       value={this.state.githubUrl}
@@ -243,11 +246,10 @@ class UserDetails extends Component {
 
                   <div className="form-check form-check-inline">
                     <input
-                      placeholder="Stack Overflow Profile Link"
                       className="form-check-input"
                       type="checkbox"
                       name="stack"
-                      checked={this.state.channels.stack}
+                      checked={this.state.stack.check}
                       onChange={this.handleChannelCheck}
                       id="optionStack"
                     />
@@ -256,6 +258,7 @@ class UserDetails extends Component {
 
                   <div className="row right">
                     <input
+                      placeholder="URL profile"
                       type="text"
                       name="stackUrl"
                       value={this.state.stackUrl}
@@ -265,11 +268,10 @@ class UserDetails extends Component {
 
                   <div className="form-check form-check-inline">
                     <input
-                      placeholder="Medium Profile Link"
                       className="form-check-input"
                       type="checkbox"
                       name="medium"
-                      checked={this.state.channels.medium}
+                      checked={this.state.medium.check}
                       onChange={this.handleChannelCheck}
                       id="optionMedium"
                     />
@@ -278,6 +280,7 @@ class UserDetails extends Component {
 
                   <div className="row right">
                     <input
+                      placeholder="URL profile"
                       type="text"
                       name="mediumUrl"
                       value={this.state.mediumUrl}
@@ -287,11 +290,10 @@ class UserDetails extends Component {
 
                   <div className="form-check form-check-inline">
                     <input
-                      placeholder="Reddit Profile Link"
                       className="form-check-input"
                       type="checkbox"
                       name="reddit"
-                      checked={this.state.channels.reddit}
+                      checked={this.state.reddit.check}
                       onChange={this.handleChannelCheck}
                       id="optionReddit"
                     />
@@ -300,6 +302,7 @@ class UserDetails extends Component {
 
                   <div className="row right">
                     <input
+                      
                       type="text"
                       name="redditUrl"
                       value={this.state.redditUrl}
@@ -309,11 +312,10 @@ class UserDetails extends Component {
 
                   <div className="form-check form-check-inline">
                     <input
-                      placeholder="CodePen Profile Link"
                       className="form-check-input"
                       type="checkbox"
                       name="codePen"
-                      checked={this.state.channels.codePen}
+                      checked={this.state.codePen.check}
                       onChange={this.handleChannelCheck}
                       id="optionCodePen"
                     />
@@ -322,6 +324,7 @@ class UserDetails extends Component {
 
                   <div className="row right">
                     <input
+                      
                       type="text"
                       name="codePenUrl"
                       value={this.state.codePenUrl}

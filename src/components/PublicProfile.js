@@ -18,8 +18,17 @@ class PublicProfile extends Component {
         withCredentials: true,
       })
       .then((res) => {
-        this.setState({ user: res.data });
+        this.setState({
+          user: res.data,
+          //linkedin: { url: res.data.linkedin.url, check: res.data.check },
+          // github: { url: res.data.github.url, check: res.data.github },
+          //stack: { url: res.data.stack.url, check: res.data.stack },
+          //medium: { url: res.data.medium.url, check: res.data.medium},
+          //reddit: { url: res.data.reddit.url, check: res.data.reddit},
+          //codePen: { url: res.data.codePen.url, check: res.data.codePen},
+        });
         console.log("userSTATEDATA", res.data);
+   
       });
   };
 
@@ -29,7 +38,8 @@ class PublicProfile extends Component {
 
   render() {
     const { user } = this.state;
-    console.log("user", user);
+    //console.log("USER-Render", {user});
+   
 
     return (
       <div>
@@ -39,7 +49,9 @@ class PublicProfile extends Component {
           </div>
           <div className="">
             <ul>
-            <li>Nome: <b>{user.name}</b></li>
+              <li>
+                Nome: <b>{user.name}</b>
+              </li>
 
               <li>
                 Position: <b>{user.position}</b>
@@ -50,14 +62,29 @@ class PublicProfile extends Component {
               </li>
 
               <li>
-                Channels: <b></b>
+                Linkedin: <b>{user.linkedin}</b>
               </li>
+              {/* <li>
+                Github: <b>{user.github.url}</b>
+              </li>
+              <li>
+                Stack Overflow: <b>{user.stack.url}</b>
+              </li>
+              <li>
+                Medium: <b>{user.medium.url}</b>
+              </li>
+              <li>
+                Reddit: <b>{user.reddit.url}</b>
+              </li>
+              <li>
+                CodePen: <b>{user.codePen.url}</b>
+              </li> */}
               <li>
                 uploadCV: <b>{user.uploadCV}</b>
               </li>
             </ul>
           </div>
-        </div>
+        </div> 
       </div>
     );
   }

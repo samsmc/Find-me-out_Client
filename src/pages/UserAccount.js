@@ -25,7 +25,7 @@ class UserAccount extends Component {
     this.getId();
   }
   render() {
-    const { user } = this.props;
+    //const { user } = this.props;
 
     return (
       <div className="container">
