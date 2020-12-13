@@ -14,12 +14,12 @@ class UserDetails extends Component {
     position: "",
     technologies: "",
     uploadCV: "",
-    linkedin: { linkedinUrl: "", check: false },
-    github: false,
-    stack: false,
-    medium: false,
-    reddit: false,
-    codePen: false,
+    linkedin: "",
+    github: "",
+    stack: "",
+    medium: "",
+    reddit: "",
+    codePen: "",
   };
 
   handleInput = (event) => {
@@ -27,11 +27,11 @@ class UserDetails extends Component {
     this.setState({ [name]: value });
   };
 
-  handleChannelCheck = (event) => {
+  /* handleChannelCheck = (event) => {
     const { name, checked } = event.target;
     this.setState({ [name]: !checked });
     console.log(name, checked);
-  };
+  }; */
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -72,12 +72,12 @@ class UserDetails extends Component {
           position: res.data.position,
           technologies: res.data.technologies,
           uploadCV: res.data.uploadCV,
-          linkedinUrl: res.data.linkedin.linkedinUrl,
-          githubUrl: res.data.githubUrl,
-          stackUrl: res.data.stackUrl,
-          mediumUrl: res.data.mediumUrl,
-          redditUrl: res.data.redditUrl,
-          codePenUrl: res.data.codePenUrl,
+          linkedin: res.data.linkedin,
+          github: res.data.github,
+          stack: res.data.stack,
+          medium: res.data.medium,
+          reddit: res.data.reddit,
+          codePen: res.data.codePen,
         });
       });
   }
@@ -126,6 +126,7 @@ class UserDetails extends Component {
                 />
               </div>
 
+
               <div className="form-group">
                 <h6>Position</h6>
                 <input
@@ -155,127 +156,127 @@ class UserDetails extends Component {
               </h6>
 
               <div className="form-group">
-                <input
+                {/* <input
                   type="checkbox"
                   name="linkedin"
                   checked={this.state.linkedin.check}
                   onChange={this.handleChannelCheck}
                   id="optionLinkedin"
-                />
+                /> */}
               </div>
               <div>
                 <h6>Linkedin</h6>
                 <input
-                className="form-control"
+                  className="form-control"
                   placeholder="URL profile"
                   type="text"
-                  name="linkedinUrl"
-                  value={this.state.linkedin.linkedinUrl}
+                  name="linkedin"
+                  value={this.state.linkedin}
                   onChange={this.handleInput}
                 />
               </div>
 
               <div className="form-group">
-                <input
+                {/* <input
                   type="checkbox"
                   name="github"
                   checked={this.state.github.check}
                   onChange={this.handleChannelCheck}
                   id="optionGithub"
-                />
+                /> */}
               </div>
               <div>
                 <h6>Github</h6>
                 <input
-                className="form-control"
+                  className="form-control"
                   placeholder="URL profile"
                   type="text"
-                  name="githubUrl"
-                  value={this.state.githubUrl}
+                  name="github"
+                  value={this.state.github}
                   onChange={this.handleInput}
                 />
               </div>
 
               <div className="form-group">
-                <input
+                {/*  <input
                   type="checkbox"
                   name="stack"
                   checked={this.state.stack.check}
                   onChange={this.handleChannelCheck}
                   id="optionStack"
-                />
+                /> */}
               </div>
               <div>
                 <h6>Stack Overflow</h6>
                 <input
-                className="form-control"
+                  className="form-control"
                   placeholder="URL profile"
                   type="text"
-                  name="stackUrl"
-                  value={this.state.stackUrl}
+                  name="stack"
+                  value={this.state.stack}
                   onChange={this.handleInput}
                 />
               </div>
 
               <div className="form-group">
-                <input
+                {/* <input
                   type="checkbox"
                   name="medium"
                   checked={this.state.medium.check}
                   onChange={this.handleChannelCheck}
                   id="optionMedium"
-                />
+                /> */}
               </div>
               <div>
                 <h6>Medium</h6>
                 <input
-                className="form-control"
+                  className="form-control"
                   placeholder="URL profile"
                   type="text"
-                  name="mediumUrl"
-                  value={this.state.mediumUrl}
+                  name="medium"
+                  value={this.state.medium}
                   onChange={this.handleInput}
                 />
               </div>
 
               <div className="form-group">
-                <input
+                {/*  <input
                   type="checkbox"
                   name="reddit"
                   checked={this.state.reddit.check}
                   onChange={this.handleChannelCheck}
                   id="optionReddit"
-                />
+                /> */}
               </div>
               <div>
                 <h6>Reddit</h6>
                 <input
-                className="form-control"
+                  className="form-control"
                   placeholder="URL profile"
                   type="text"
-                  name="redditUrl"
-                  value={this.state.redditUrl}
+                  name="reddit"
+                  value={this.state.reddit}
                   onChange={this.handleInput}
                 />
               </div>
 
               <div className="form-group">
-                <input
+                {/*  <input
                   type="checkbox"
                   name="codePen"
                   checked={this.state.codePen.check}
                   onChange={this.handleChannelCheck}
                   id="optionCodePen"
-                />
+                /> */}
               </div>
               <div>
                 <h6>CodePen</h6>
                 <input
-                className="form-control"
+                  className="form-control"
                   placeholder="URL profile"
                   type="text"
-                  name="codePenUrl"
-                  value={this.state.codePenUrl}
+                  name="codePen"
+                  value={this.state.codePen}
                   onChange={this.handleInput}
                 />
               </div>
@@ -292,7 +293,7 @@ class UserDetails extends Component {
                 />
               </div>
             </div>
-            <button className="btn-user " type="submit">
+            <button className="btn-user" type="submit">
               UPDATE PROFILE
             </button>
           </form>

@@ -20,12 +20,6 @@ class PublicProfile extends Component {
       .then((res) => {
         this.setState({
           user: res.data,
-          //linkedin: { url: res.data.linkedin.url, check: res.data.check },
-          // github: { url: res.data.github.url, check: res.data.github },
-          //stack: { url: res.data.stack.url, check: res.data.stack },
-          //medium: { url: res.data.medium.url, check: res.data.medium},
-          //reddit: { url: res.data.reddit.url, check: res.data.reddit},
-          //codePen: { url: res.data.codePen.url, check: res.data.codePen},
         });
         console.log("userSTATEDATA", res.data);
       });
@@ -48,7 +42,7 @@ class PublicProfile extends Component {
                 <img alt="user-profile" src={user.photo} />
               </div>
               <div className="">
-                {/* <ul>
+                <ul>
                   <li>
                     Nome: <b>{user.name}</b>
                   </li>
@@ -60,37 +54,33 @@ class PublicProfile extends Component {
                   <li>
                     technologies: <b>{user.technologies}</b>
                   </li>
+                  <h6>Channels</h6>
+                  <li>
+                    Linkedin:
+                    {/* <img src="../images/linkedin.png" /> */}
+                    <b>{user.linkedin}</b>
+                  </li>
 
                   <li>
-                    Linkedin: <b>{user.linkedin}</b>
+                    Github: <b>{user.github}</b>
                   </li>
                   <li>
-                    Github: <b>{user.github.url}</b>
+                    Stack Overflow: <b>{user.stack}</b>
                   </li>
                   <li>
-                    Stack Overflow: <b>{user.stack.url}</b>
+                    Medium: <b>{user.medium}</b>
                   </li>
                   <li>
-                    Medium: <b>{user.medium.url}</b>
+                    Reddit: <b>{user.reddit}</b>
                   </li>
                   <li>
-                    Reddit: <b>{user.reddit.url}</b>
-                  </li>
-                  <li>
-                    CodePen: <b>{user.codePen.url}</b>
+                    CodePen: <b>{user.codePen}</b>
+                    {/* <img src="../images/codepen.png" /> */}
                   </li>
                   <li>
                     uploadCV: <b>{user.uploadCV}</b>
                   </li>
-                </ul> */}
-              </div>
-              <div className="signup-image">
-                <figure>
-                  <img
-                    src="https://res.cloudinary.com/mscsam/image/upload/v1607711275/settings_rkqex1.jpg"
-                    alt="signup"
-                  />
-                </figure>
+                </ul>
               </div>
             </div>
           </div>
