@@ -16,7 +16,7 @@ class TheNavbar extends Component {
     return (
       <div>
         <Navbar bg="light" variant="light">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <Link to={"/"}>
               <img
                 alt="Logo"
@@ -31,35 +31,40 @@ class TheNavbar extends Component {
             {isLoggedin ? (
               <>
                 <NavDropdown title={user.name} id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">
-                    Edit Profile
+                  <NavDropdown.Item>
+                    <Link to={"./user/userDetail"}>
+                      Edit Profile
+                    </Link>
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Dashboard
+                  <NavDropdown.Item>
+                    <Link to={`/user/${this.props.user._id}`}>
+                      View Public Profile
+                    </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.3">
-                    <button className="navbar-button" onClick={logout}>
+                    <button className="btn-user" onClick={logout}>
                       Logout
                     </button>
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link>
-                <Link to={"/private"}>
-                  <img
-                    alt="user-icon"
-                    src="https://res.cloudinary.com/mscsam/image/upload/v1607444982/icons8-test-account-50_i0v3ow.png"
-                  /></Link>
+                  <Link to={"/private"}>
+                    <img
+                      alt="user-icon"
+                      src="https://res.cloudinary.com/mscsam/image/upload/v1607444982/icons8-test-account-50_i0v3ow.png"
+                    />
+                  </Link>
                 </Nav.Link>
               </>
             ) : (
               <>
                 <Link to="/login">
-                  <button className="navbar-button">Login</button>
+                  <button className="btn-user">Login</button>
                 </Link>
                 <br />
                 <Link to="/signup">
-                  <button className="navbar-button">Sign Up</button>
+                  <button className="btn-user">Sign Up</button>
                 </Link>
               </>
             )}

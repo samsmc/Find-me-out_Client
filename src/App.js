@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -20,12 +20,12 @@ function App() {
       <Navbar />
 
       <Switch>
-        <Home exact path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <AnonRoute exact path="/signup" component={Signup} />
         <AnonRoute exact path="/login" component={Login} />
         <PrivateRoute exact path="/user/userDetail" component={UserDetails} />
         <PrivateRoute exact path="/private" component={UserAccount} />
-        <PublicProfile exact path="/user/:id" component={PublicProfile} />
+        <Route exact path="/user/:id" component={PublicProfile} />
       </Switch>
     </AuthProvider>
   );
