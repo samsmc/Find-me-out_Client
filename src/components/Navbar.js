@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import {
   Navbar,
@@ -43,7 +43,7 @@ class TheNavbar extends Component {
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.3">
-                    <button className="btn-user" onClick={logout}>
+                    <button className="btn-user" onClick={logout}><Redirect to='/' />
                       Logout
                     </button>
                   </NavDropdown.Item>

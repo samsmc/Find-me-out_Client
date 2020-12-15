@@ -3,10 +3,6 @@ import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 import service from "../api/service";
 
-//imprimir os valores existentes dentro do input
-//check buttons and input links
-//create a function to upload the CV
-
 class UserDetails extends Component {
   state = {
     photo: "",
@@ -27,11 +23,6 @@ class UserDetails extends Component {
     this.setState({ [name]: value });
   };
 
-  /* handleChannelCheck = (event) => {
-    const { name, checked } = event.target;
-    this.setState({ [name]: !checked });
-    console.log(name, checked);
-  }; */
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -50,6 +41,7 @@ class UserDetails extends Component {
 
   handleFileUpload = async (e) => {
     const uploadData = new FormData();
+
     uploadData.append("photo", e.target.files[0]);
     try {
       const res = await service.handleUpload(uploadData);
@@ -125,7 +117,6 @@ class UserDetails extends Component {
                   onChange={this.handleInput}
                 />
               </div>
-
 
               <div className="form-group">
                 <h6>Position</h6>
@@ -284,7 +275,6 @@ class UserDetails extends Component {
               <br></br>
 
               <div className="form-group">
-                <h6>Upload CV</h6>
                 <input
                   type="file"
                   name="uploadCV"
@@ -292,6 +282,13 @@ class UserDetails extends Component {
                   onChange={this.handleFileUpload}
                 />
               </div>
+              <img
+                width={150}
+                height={150}
+                alt="cv-img"
+                src={this.state.uploadCV}
+                className="circle-img"
+              />
             </div>
             <button className="btn-user" type="submit">
               UPDATE PROFILE
