@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 import service from "../api/service";
+import fileupload from "../api/fileupload";
 
 class UserDetails extends Component {
   state = {
@@ -22,7 +23,6 @@ class UserDetails extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -47,6 +47,19 @@ class UserDetails extends Component {
       const res = await service.handleUpload(uploadData);
 
       this.setState({ photo: res.secure_url });
+    } catch (error) {
+      console.log("Error while uploading the file: ", error);
+    }
+  };
+
+  handleCvUpload = async (e) => {
+    const uploadDataCv = new FormData();
+
+    uploadDataCv.append("uploadCV", e.target.files[0]);
+    try {
+      const res = await fileupload.handleUploadCv(uploadDataCv);
+
+      this.setState({ uploadCV: res.secure_url });
     } catch (error) {
       console.log("Error while uploading the file: ", error);
     }
@@ -147,15 +160,6 @@ class UserDetails extends Component {
               </h6>
 
               <div className="form-group">
-                {/* <input
-                  type="checkbox"
-                  name="linkedin"
-                  checked={this.state.linkedin.check}
-                  onChange={this.handleChannelCheck}
-                  id="optionLinkedin"
-                /> */}
-              </div>
-              <div>
                 <h6>Linkedin</h6>
                 <input
                   className="form-control"
@@ -168,15 +172,6 @@ class UserDetails extends Component {
               </div>
 
               <div className="form-group">
-                {/* <input
-                  type="checkbox"
-                  name="github"
-                  checked={this.state.github.check}
-                  onChange={this.handleChannelCheck}
-                  id="optionGithub"
-                /> */}
-              </div>
-              <div>
                 <h6>Github</h6>
                 <input
                   className="form-control"
@@ -189,15 +184,6 @@ class UserDetails extends Component {
               </div>
 
               <div className="form-group">
-                {/*  <input
-                  type="checkbox"
-                  name="stack"
-                  checked={this.state.stack.check}
-                  onChange={this.handleChannelCheck}
-                  id="optionStack"
-                /> */}
-              </div>
-              <div>
                 <h6>Stack Overflow</h6>
                 <input
                   className="form-control"
@@ -210,15 +196,6 @@ class UserDetails extends Component {
               </div>
 
               <div className="form-group">
-                {/* <input
-                  type="checkbox"
-                  name="medium"
-                  checked={this.state.medium.check}
-                  onChange={this.handleChannelCheck}
-                  id="optionMedium"
-                /> */}
-              </div>
-              <div>
                 <h6>Medium</h6>
                 <input
                   className="form-control"
@@ -231,15 +208,6 @@ class UserDetails extends Component {
               </div>
 
               <div className="form-group">
-                {/*  <input
-                  type="checkbox"
-                  name="reddit"
-                  checked={this.state.reddit.check}
-                  onChange={this.handleChannelCheck}
-                  id="optionReddit"
-                /> */}
-              </div>
-              <div>
                 <h6>Reddit</h6>
                 <input
                   className="form-control"
@@ -252,15 +220,6 @@ class UserDetails extends Component {
               </div>
 
               <div className="form-group">
-                {/*  <input
-                  type="checkbox"
-                  name="codePen"
-                  checked={this.state.codePen.check}
-                  onChange={this.handleChannelCheck}
-                  id="optionCodePen"
-                /> */}
-              </div>
-              <div>
                 <h6>CodePen</h6>
                 <input
                   className="form-control"
@@ -279,16 +238,10 @@ class UserDetails extends Component {
                   type="file"
                   name="uploadCV"
                   value={""}
-                  onChange={this.handleFileUpload}
+                  onChange={this.handleCvUpload}
                 />
               </div>
-              <img
-                width={150}
-                height={150}
-                alt="cv-img"
-                src={this.state.uploadCV}
-                className="circle-img"
-              />
+
             </div>
             <button className="btn-user" type="submit">
               UPDATE PROFILE
