@@ -3,7 +3,6 @@ import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 import service from "../api/service";
 import fileupload from "../api/fileupload";
-import { Progress } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -22,7 +21,6 @@ class UserDetails extends Component {
     codePen: "",
 
     selectedFile: null,
-    loaded: 0,
   };
 
   handleInput = (event) => {
@@ -42,15 +40,22 @@ class UserDetails extends Component {
       )
       .then((response) => {
         this.props.history.push(`/user/${this.props.user._id}`);
+      })
+      .catch((err) => {
+        toast.error("upload fail");
       });
   };
 
   handleFileUpload = async (e) => {
     const uploadData = new FormData();
-
     uploadData.append("photo", e.target.files[0]);
     try {
       const res = await service.handleUpload(uploadData);
+
+      if (
+        this.checkMimeType(e) &&
+        this.checkFileSize(e)
+      )
 
       this.setState({ photo: res.secure_url });
     } catch (error) {
@@ -64,6 +69,11 @@ class UserDetails extends Component {
     uploadDataCv.append("uploadCV", e.target.files[0]);
     try {
       const res = await fileupload.handleUploadCv(uploadDataCv);
+
+      if (
+        this.checkMimeType(e) &&
+        this.checkFileSize(e)
+      )
 
       this.setState({ uploadCV: res.secure_url });
     } catch (error) {
@@ -110,18 +120,6 @@ class UserDetails extends Component {
     return true;
   };
 
-  //num max files
-  maxSelectFile = (event) => {
-    let files = event.target.files; // create file object
-    if (files.length > 1) {
-      const msg = "Only 1 image can be uploaded";
-      event.target.value = null; // discard selected file
-      console.log(msg);
-      return false;
-    }
-    return true;
-  };
-
   //Uploading an image with the wrong file extension
   checkMimeType = (event) => {
     //getting file object
@@ -147,11 +145,11 @@ class UserDetails extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <h3 className="form-title">
+          <h3 className="form-title" style={{textAlign:"center"}} >
             Ensure you fill this form with all the information you want to be
             seen!
           </h3>
+        <div className="container">
           <form onSubmit={this.handleSubmit}>
             <div>
               <div>
@@ -166,6 +164,8 @@ class UserDetails extends Component {
                 style={{
                   backgroundImage:
                     "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'",
+                  width: 150,
+                  height: 150,
                 }}
               />
 
@@ -173,16 +173,10 @@ class UserDetails extends Component {
                 <input
                   type="file"
                   name="photo"
-                  value={""}
                   onChange={this.handleFileUpload}
                 />
               </div>
 
-              <div class="form-group">
-                <Progress max="100" color="success" value={this.state.loaded}>
-                  {Math.round(this.state.loaded, 2)}%
-                </Progress>
-              </div>
               <div class="form-group">
                 <ToastContainer />
               </div>
@@ -221,8 +215,8 @@ class UserDetails extends Component {
                 />
               </div>
 
-              <h6 className="form-group">
-                <b>Channels:</b>
+              <h6 className="form-group" style={{color: "grey"}} >
+                <u>Channels:</u>
               </h6>
 
               <div className="form-group">
@@ -304,21 +298,15 @@ class UserDetails extends Component {
                 <input
                   type="file"
                   name="uploadCV"
-                  value={""}
                   onChange={this.handleCvUpload}
                 />
               </div>
 
               <div class="form-group">
-                <Progress max="100" color="success" value={this.state.loaded}>
-                  {Math.round(this.state.loaded, 2)}%
-                </Progress>
-              </div>
-              <div class="form-group">
                 <ToastContainer />
               </div>
             </div>
-            <button className="btn-user" type="submit">
+            <button className="btn-userForm" type="submit">
               UPDATE PROFILE
             </button>
           </form>

@@ -83,6 +83,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     color: #222;
     font-family: Poppins;
     font-size: 36px; }
+
+  h6 {
+   font-weight: bold;}
   
   .main {
     background: #f8f8f8;
@@ -197,9 +200,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     display: block;
     text-align: center; }
   
-  .term-service {
+  /* .term-service {
     font-size: 13px;
-    color: #222; }
+    color: #222; } */
   
   .signup-form {
     margin-left: 75px;
@@ -223,6 +226,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     border-bottom: 1px solid #999;
     padding: 6px 30px;
     font-family: Poppins;
+    font-size: 15px;
     box-sizing: border-box; }
     input::-webkit-input-placeholder {
       color: #999; }
@@ -337,14 +341,14 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
       font-size: 16px;
       color: green; }
   
-  .label-agree-term {
+  /* .label-agree-term {
     position: relative;
     top: 0%;
     transform: translateY(0);
     -moz-transform: translateY(0);
     -webkit-transform: translateY(0);
     -o-transform: translateY(0);
-    -ms-transform: translateY(0); }
+    -ms-transform: translateY(0); } */
   
   .material-icons-name {
     font-size: 18px; }

@@ -36,7 +36,7 @@ class TheNavbar extends Component {
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <Link to={`/user/${this.props.user._id}`}>
-                      View Public Profile
+                      Public Profile
                     </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />

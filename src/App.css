@@ -159,7 +159,7 @@ breakpoint {
     display: inline-block;
     background: #1cc9da;
     color: #fff;
-    border-bottom: none;
+    border: none;
     width: auto;
     padding: 15px 39px;
     border-radius: 20px;
@@ -265,3 +265,33 @@ breakpoint {
       }
       .color input{ background-color:#f1f1f1;}
       
+      
+      .btn-userForm {
+        display: inline-block;
+        background: #1cc9da;
+        color: #fff;
+        border: none;
+        width: auto;
+        padding: 15px 39px;
+        -webkit-border-radius: 20px;
+        margin-top: 25px;
+        margin-left: 40%;
+        margin-bottom: 50px;
+        cursor: pointer; }
+        .btn-user:hover {
+          background: #01c5c4; }
+
+      .btn-delete {display: inline-block;
+        background: #none;
+        color: black;
+        border: none;
+        width: auto;
+        padding: 15px 39px;
+        border-radius: 20px;
+        -moz-border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -o-border-radius: 20px;
+        -ms-border-radius: 20px;
+        margin-top: 25px;
+        cursor: pointer; }
+        
