@@ -19,6 +19,9 @@ class UserDetails extends Component {
     medium: "",
     reddit: "",
     codePen: "",
+    project1: "",
+    project2: "",
+    project3: "",
 
     selectedFile: null,
   };
@@ -52,12 +55,8 @@ class UserDetails extends Component {
     try {
       const res = await service.handleUpload(uploadData);
 
-      if (
-        this.checkMimeType(e) &&
-        this.checkFileSize(e)
-      )
-
-      this.setState({ photo: res.secure_url });
+      if (this.checkMimeType(e) && this.checkFileSize(e))
+        this.setState({ photo: res.secure_url });
     } catch (error) {
       console.log("Error while uploading the file: ", error);
     }
@@ -70,12 +69,8 @@ class UserDetails extends Component {
     try {
       const res = await fileupload.handleUploadCv(uploadDataCv);
 
-      if (
-        this.checkMimeType(e) &&
-        this.checkFileSize(e)
-      )
-
-      this.setState({ uploadCV: res.secure_url });
+      if (this.checkMimeType(e) && this.checkFileSize(e))
+        this.setState({ uploadCV: res.secure_url });
     } catch (error) {
       console.log("Error while uploading the file: ", error);
     }
@@ -99,6 +94,9 @@ class UserDetails extends Component {
           medium: res.data.medium,
           reddit: res.data.reddit,
           codePen: res.data.codePen,
+          project1: res.data.project1,
+          project2: res.data.project2,
+          project3: res.data.project3,
         });
       });
   }
@@ -145,10 +143,10 @@ class UserDetails extends Component {
   render() {
     return (
       <div>
-          <h3 className="form-title" style={{textAlign:"center"}} >
-            Ensure you fill this form with all the information you want to be
-            seen!
-          </h3>
+        <h3 className="form-title" style={{ textAlign: "center" }}>
+          Ensure you fill this form with all the information you want to be
+          seen! <h6>(only filled fields will be displayed)</h6>
+        </h3>
         <div className="container">
           <form onSubmit={this.handleSubmit}>
             <div>
@@ -160,13 +158,6 @@ class UserDetails extends Component {
                 height={150}
                 alt="avatar_img"
                 src={this.state.photo}
-                className="circle-img"
-                style={{
-                  backgroundImage:
-                    "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'",
-                  width: 150,
-                  height: 150,
-                }}
               />
 
               <div className="form-group files color">
@@ -175,6 +166,7 @@ class UserDetails extends Component {
                   name="photo"
                   onChange={this.handleFileUpload}
                 />
+                <span class="helper-message">Upload an image of maxium 2MB.</span>
               </div>
 
               <div class="form-group">
@@ -215,7 +207,48 @@ class UserDetails extends Component {
                 />
               </div>
 
-              <h6 className="form-group" style={{color: "grey"}} >
+              <h6 className="form-group" style={{ color: "grey" }}>
+                <u>Main Projects: </u>
+                <p>Select 3 of your best project to be displayed!</p>
+              </h6>
+
+              <div className="form-group">
+                <h6>Project number 1</h6>
+                <input
+                  className="form-control"
+                  placeholder="Project URL"
+                  type="text"
+                  name="project1"
+                  value={this.state.project1}
+                  onChange={this.handleInput}
+                />
+              </div>
+
+              <div className="form-group">
+                <h6>Project number 2</h6>
+                <input
+                  className="form-control"
+                  placeholder="Project URL"
+                  type="text"
+                  name="project2"
+                  value={this.state.projec21}
+                  onChange={this.handleInput}
+                />
+              </div>
+
+              <div className="form-group">
+                <h6>Project number 3</h6>
+                <input
+                  className="form-control"
+                  placeholder="Project URL"
+                  type="text"
+                  name="project3"
+                  value={this.state.project3}
+                  onChange={this.handleInput}
+                />
+              </div>
+
+              <h6 className="form-group" style={{ color: "grey" }}>
                 <u>Channels:</u>
               </h6>
 

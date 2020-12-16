@@ -46,18 +46,63 @@ class PublicProfile extends Component {
             <div class="signin-content">
               <div className="public-profileImg">
                 <img id="profilePhoto" src={user.photo} alt="profile img" />
+
+                {/* Projects  */}
+                <div>
+                  <h6>Main Projects: </h6>
+                </div>
+                <div className="projects">
+                  <div className="form-group">
+                    {user.project1 && (
+                      <a href={user.project1}>
+                        <img
+                          alt="project1 icon"
+                          src="https://res.cloudinary.com/mscsam/image/upload/v1608134461/programming_1_gunkad.png"
+                          className="icon"
+                        />
+                      </a>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    {user.project2 && (
+                      <a href={user.project2}>
+                        <img
+                          alt="project2 icon"
+                          src="https://res.cloudinary.com/mscsam/image/upload/v1608134199/education_uttglw.png"
+                          className="icon"
+                        />
+                      </a>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    {user.project3 && (
+                      <a href={user.project3}>
+                        <img
+                          alt="project3 icon"
+                          src="https://res.cloudinary.com/mscsam/image/upload/v1608134467/startup_ibr1lf.png"
+                          className="icon"
+                        />
+                      </a>
+                    )}
+                  </div>
+                </div>
+                <br></br>
+                {/* end projects */}
               </div>
 
+              {/* Channels */}
               <div className="icon-column">
                 <div className="form-group">
-                  <a href={user.uploadCV}>
-                    <img
-                      alt="cv icon"
-                      src="https://res.cloudinary.com/mscsam/image/upload/v1607965243/cv_tiajef.png"
-                      width="60"
-                      height="60"
-                    />
-                  </a>
+                  {user.uploadCV && (
+                    <a href={user.uploadCV}>
+                      <img
+                        alt="cv icon"
+                        src="https://res.cloudinary.com/mscsam/image/upload/v1607965243/cv_tiajef.png"
+                        width="60"
+                        height="60"
+                      />
+                    </a>
+                  )}
                 </div>
                 <div className="form-group">
                   {user.linkedin && (
@@ -104,17 +149,6 @@ class PublicProfile extends Component {
                   )}
                 </div>
                 <div className="form-group">
-                  {user.reddit && (
-                    <a href={user.reddit}>
-                      <img
-                        alt="medium icon"
-                        src="https://res.cloudinary.com/mscsam/image/upload/v1607964570/reddit_yob9m2.png"
-                        className="icon"
-                      />
-                    </a>
-                  )}
-                </div>
-                <div className="form-group">
                   {user.codePen && (
                     <a href={user.codePen}>
                       <img
@@ -125,21 +159,36 @@ class PublicProfile extends Component {
                     </a>
                   )}
                 </div>
+                <div className="form-group">
+                  {user.reddit && (
+                    <a href={user.reddit}>
+                      <img
+                        alt="medium icon"
+                        src="https://res.cloudinary.com/mscsam/image/upload/v1607964570/reddit_yob9m2.png"
+                        className="icon"
+                      />
+                    </a>
+                  )}
+                </div>
               </div>
+              {/* end channels  */}
+
               <div className="profile-column">
                 <div className="form-group">
-                  <h4><b>{user.position}</b>
+                  <h4>
+                    <b>{user.position}</b>
                   </h4>
                 </div>
-                <div className="form-group" style={{maxWidth:105, margin: "auto", marginTop:45}}>
-                  <h5>{user.technologies}
-                  </h5>
+                <div
+                  className="form-group"
+                  style={{ maxWidth: 105, margin: "auto", marginTop: 45 }}
+                >
+                  <h5>{user.technologies}</h5>
                 </div>
                 <div className="profile-btn">
                   <Link to={"./userDetail"}>
-                  <button
-                    className="btn-user">back</button>
-                    </Link>
+                    <button className="btn-user">back</button>
+                  </Link>
                 </div>
               </div>
             </div>

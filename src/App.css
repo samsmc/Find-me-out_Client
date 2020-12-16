@@ -152,7 +152,7 @@ breakpoint {
   box-shadow: 0 0 0px 10px #8888883c;
   margin-bottom: 30px;
   background-image: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
-  background-size: cover;
+  background-size: 150px;
   }
 
   .btn-user {
@@ -196,20 +196,20 @@ breakpoint {
      }
 
      #profilePhoto {
-      width: 250px;
-      height: 250px;
-      border-radius: 200px;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
       margin-bottom: 30px;
       background-image: url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png');
       }
      
       .public-profileImg {
-        margin-left: 80px;
-        margin-top: 90px;
+        margin-left: 110px;
+        
       } 
 
       .profile-column {
-        margin-right: 150px;
+        margin-right: 200px;
         margin-left: 90px;
         text-align: center;
       }
@@ -222,8 +222,13 @@ breakpoint {
       .icon-column {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        
       }
+
+      .projects {
+          display: flex;
+          justify-content: space-around;
+        }
 
       .signin-content {
         display: flex;
@@ -281,8 +286,9 @@ breakpoint {
         .btn-user:hover {
           background: #01c5c4; }
 
-      .btn-delete {display: inline-block;
-        background: #none;
+      .btn-delete {
+        display: inline-block;
+        background: #fff;
         color: black;
         border: none;
         width: auto;
@@ -294,4 +300,6 @@ breakpoint {
         -ms-border-radius: 20px;
         margin-top: 25px;
         cursor: pointer; }
+
+        
         
