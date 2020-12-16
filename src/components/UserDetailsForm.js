@@ -3,6 +3,9 @@ import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 import service from "../api/service";
 import fileupload from "../api/fileupload";
+import { Progress } from "reactstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class UserDetails extends Component {
   state = {
@@ -17,6 +20,9 @@ class UserDetails extends Component {
     medium: "",
     reddit: "",
     codePen: "",
+
+    selectedFile: null,
+    loaded: 0,
   };
 
   handleInput = (event) => {
@@ -87,6 +93,57 @@ class UserDetails extends Component {
       });
   }
 
+  //Uploading an image that is too large
+  checkFileSize = (event) => {
+    let files = event.target.files;
+    let size = 2000000;
+    let err = [];
+    for (var x = 0; x < files.length; x++) {
+      if (files[x].size > size) {
+        err[x] = files[x].type + "is too large, please pick a smaller file\n";
+      }
+    }
+    for (var z = 0; z < err.length; z++) {
+      toast.error(err[z]);
+      event.target.value = null;
+    }
+    return true;
+  };
+
+  //num max files
+  maxSelectFile = (event) => {
+    let files = event.target.files; // create file object
+    if (files.length > 1) {
+      const msg = "Only 1 image can be uploaded";
+      event.target.value = null; // discard selected file
+      console.log(msg);
+      return false;
+    }
+    return true;
+  };
+
+  //Uploading an image with the wrong file extension
+  checkMimeType = (event) => {
+    //getting file object
+    let files = event.target.files;
+    let err = []; // create empty array
+    // list allow mime type
+    const types = ["image/png", "image/jpeg", "image/gif", "application/pdf"];
+    // loop access array
+    for (var x = 0; x < files.length; x++) {
+      if (types.every((type) => files[x].type !== type)) {
+        err[x] = files[x].type + " is not a supported format\n";
+        // assign message to array
+      }
+    }
+    for (var z = 0; z < err.length; z++) {
+      // loop create toast massage
+      event.target.value = null;
+      toast.error(err[z]);
+    }
+    return true;
+  };
+
   render() {
     return (
       <div>
@@ -112,13 +169,22 @@ class UserDetails extends Component {
                 }}
               />
 
-              <div className="form-group">
+              <div className="form-group files color">
                 <input
                   type="file"
                   name="photo"
                   value={""}
                   onChange={this.handleFileUpload}
                 />
+              </div>
+
+              <div class="form-group">
+                <Progress max="100" color="success" value={this.state.loaded}>
+                  {Math.round(this.state.loaded, 2)}%
+                </Progress>
+              </div>
+              <div class="form-group">
+                <ToastContainer />
               </div>
 
               <div className="form-group">
@@ -233,7 +299,8 @@ class UserDetails extends Component {
 
               <br></br>
 
-              <div className="form-group">
+              <div className="form-group files color">
+                <h6>Upload Your CV</h6>
                 <input
                   type="file"
                   name="uploadCV"
@@ -242,6 +309,14 @@ class UserDetails extends Component {
                 />
               </div>
 
+              <div class="form-group">
+                <Progress max="100" color="success" value={this.state.loaded}>
+                  {Math.round(this.state.loaded, 2)}%
+                </Progress>
+              </div>
+              <div class="form-group">
+                <ToastContainer />
+              </div>
             </div>
             <button className="btn-user" type="submit">
               UPDATE PROFILE

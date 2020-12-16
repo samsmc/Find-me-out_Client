@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 function Home() {
   return (
@@ -18,12 +20,9 @@ function Home() {
                 </div>
 
                 <div className="form-group form-button">
-                  <input
-                    type="submit"
-                    id="signup"
-                    className="form-submit"
-                    value="Search Now"
-                  />
+                <Link to="/login">
+                  <h6 className="form-submit" style={{backgroundColor:"orange"}} >Start Now</h6>
+                  </Link>
                 </div>
               </form>
             </div>

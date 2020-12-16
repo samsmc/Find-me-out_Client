@@ -11,7 +11,7 @@ import UserAccount from "./pages/UserAccount";
 import AuthProvider from "./lib/AuthProvider";
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
-import UserDetails from "./components/UserDetails";
+import UserDetailsForm from "./components/UserDetailsForm";
 import PublicProfile from "./components/PublicProfile";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <AnonRoute exact path="/signup" component={Signup} />
         <AnonRoute exact path="/login" component={Login} />
-        <PrivateRoute exact path="/user/userDetail" component={UserDetails} />
+        <PrivateRoute exact path="/user/userDetail" component={UserDetailsForm} />
         <PrivateRoute exact path="/private" component={UserAccount} />
         <Route exact path="/user/:id" component={PublicProfile} />
       </Switch>

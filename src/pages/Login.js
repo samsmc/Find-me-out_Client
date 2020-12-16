@@ -30,7 +30,7 @@ class Login extends Component {
                 <figure>
                   <img src="https://res.cloudinary.com/mscsam/image/upload/v1607708503/signin-image_eotjjw.jpg" alt="sing up" />
                 </figure>
-                <Link to={"/login"}>
+                <Link to={"/signup"}>
                   <div className="signup-image-link">Create an account</div>
                 </Link>
               </div>

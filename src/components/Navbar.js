@@ -32,9 +32,7 @@ class TheNavbar extends Component {
               <>
                 <NavDropdown title={user.name} id="basic-nav-dropdown">
                   <NavDropdown.Item>
-                    <Link to={"./user/userDetail"}>
-                      Edit Profile
-                    </Link>
+                    <Link to={"/user/userDetail"}>Edit Profile</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <Link to={`/user/${this.props.user._id}`}>
@@ -43,7 +41,8 @@ class TheNavbar extends Component {
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action/3.3">
-                    <button className="btn-user" onClick={logout}><Redirect to='/' />
+                    <button className="btn-user" onClick={logout}>
+                      <Redirect to="/" />
                       Logout
                     </button>
                   </NavDropdown.Item>
@@ -60,11 +59,11 @@ class TheNavbar extends Component {
             ) : (
               <>
                 <Link to="/login">
-                  <button className="btn-user">Login</button>
+                  <h6 className="btn-user">Login</h6>
                 </Link>
-                <br />
+                
                 <Link to="/signup">
-                  <button className="btn-user">Sign Up</button>
+                  <h6 className="btn-user">Sign Up</h6>
                 </Link>
               </>
             )}

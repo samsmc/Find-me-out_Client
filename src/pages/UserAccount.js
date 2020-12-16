@@ -9,7 +9,9 @@ class UserAccount extends Component {
     this.state = {
       userInfo: {},
     };
+    this.deleteUser = this.deleteUser.bind(this);
   }
+
   getId() {
     axios
       .get(
@@ -24,6 +26,18 @@ class UserAccount extends Component {
   componentDidMount() {
     this.getId();
   }
+
+  deleteUser() {
+    axios
+      .delete(
+        `${process.env.REACT_APP_API_URL}/user/delete/${this.props.user._id}`,
+        { withCredentials: true }
+      )
+      .then((res) => {
+        this.props.history.push('/');
+      });
+  }
+
   render() {
     //const { user } = this.props;
 
@@ -58,9 +72,16 @@ class UserAccount extends Component {
                     <h6 className="btn-user">Edit profile</h6>
                   </Link>
                 </div>
-                <Link to={`/user/${this.props.user._id}`}>
-                  <h6 className="btn-user">View Public Profile</h6>
-                </Link>
+                <div>
+                  <Link to={`/user/${this.props.user._id}`}>
+                    <h6 className="btn-user">View Public Profile</h6>
+                  </Link>
+                </div>
+                <div>
+                  <button className="btn-delete" onClick={this.deleteUser}>
+                    Delete my account
+                  </button>
+                </div>
               </div>
               <div className="signup-image">
                 <figure>
@@ -77,5 +98,8 @@ class UserAccount extends Component {
     );
   }
 }
+UserAccount.defaultProps = {
+  refresh: () => null,
+};
 
 export default withAuth(UserAccount);
