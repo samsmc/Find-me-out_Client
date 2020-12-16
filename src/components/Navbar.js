@@ -35,13 +35,13 @@ class TheNavbar extends Component {
                     <Link to={"/user/userDetail"}>Edit Profile</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
-                    <Link to={`/user/${this.props.user._id}`}>
+                    <Link to={`/pro/${this.props.user._id}`}>
                       Public Profile
                     </Link>
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.3">
-                    <button className="btn-user" onClick={logout}>
+                  <NavDropdown.Item>
+                    <button className="btn-nav" onClick={logout}>
                       <Redirect to="/" />
                       Logout
                     </button>
@@ -57,17 +57,20 @@ class TheNavbar extends Component {
                 </Nav.Link>
               </>
             ) : (
-              <>
+              <div className="group-btn">
                 <Link to="/login">
-                  <h6 className="btn-user">Login</h6>
+                  <p className="btn-nav">Login</p>
                 </Link>
                 
                 <Link to="/signup">
-                  <h6 className="btn-user">Sign Up</h6>
+                  <p className="btn-nav">Sign Up</p>
                 </Link>
-              </>
+              </div>
             )}
           </Nav>
+          <Link to={"/findApro"}>
+          <Nav.Link href="#link">Find a professional</Nav.Link>
+          </Link>
           <Form inline>
             <FormControl type="text" placeholder="Search" className="mr-sm-2" />
             <Button variant="outline-primary">Search</Button>

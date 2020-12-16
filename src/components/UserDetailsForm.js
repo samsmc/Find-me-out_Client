@@ -42,7 +42,7 @@ class UserDetails extends Component {
         { withCredentials: true }
       )
       .then((response) => {
-        this.props.history.push(`/user/${this.props.user._id}`);
+        this.props.history.push(`/pro/${this.props.user._id}`);
       })
       .catch((err) => {
         toast.error("upload fail");

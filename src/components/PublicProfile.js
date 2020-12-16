@@ -31,6 +31,7 @@ class PublicProfile extends Component {
   }
 
   render() {
+    const { isLoggedin } = this.props;
     const { user } = this.state;
     //console.log("USER-Render", {user});
 
@@ -185,11 +186,15 @@ class PublicProfile extends Component {
                 >
                   <h5>{user.technologies}</h5>
                 </div>
+                {isLoggedin ? (
                 <div className="profile-btn">
                   <Link to={"./userDetail"}>
                     <button className="btn-user">back</button>
                   </Link>
                 </div>
+                ) : (
+                  <></>
+                  )}
               </div>
             </div>
           </div>

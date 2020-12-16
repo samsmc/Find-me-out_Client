@@ -73,7 +73,7 @@ class UserAccount extends Component {
                   </Link>
                 </div>
                 <div>
-                  <Link to={`/user/${this.props.user._id}`}>
+                  <Link to={`/pro/${this.props.user._id}`}>
                     <h6 className="btn-user">View Public Profile</h6>
                   </Link>
                 </div>

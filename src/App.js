@@ -13,6 +13,7 @@ import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 import UserDetailsForm from "./components/UserDetailsForm";
 import PublicProfile from "./components/PublicProfile";
+import ListUsers from "./components/List-users";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <AnonRoute exact path="/login" component={Login} />
         <PrivateRoute exact path="/user/userDetail" component={UserDetailsForm} />
         <PrivateRoute exact path="/private" component={UserAccount} />
-        <Route exact path="/user/:id" component={PublicProfile} />
+        <Route exact path="/pro/:id" component={PublicProfile} />
+        <Route exact path="/findApro" component={ListUsers} />
       </Switch>
     </AuthProvider>
   );

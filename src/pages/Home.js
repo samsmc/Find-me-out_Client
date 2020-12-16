@@ -21,7 +21,7 @@ function Home() {
 
                 <div className="form-group form-button">
                 <Link to="/login">
-                  <h6 className="form-submit" style={{backgroundColor:"orange"}} >Start Now</h6>
+                  <h6 className="form-submit" style={{backgroundColor:"#fe6225"}} >Start Now</h6>
                   </Link>
                 </div>
               </form>
