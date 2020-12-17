@@ -1,16 +1,25 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  FormControl,
-  Form,
-  Button,
-} from "react-bootstrap";
+import axios from "axios";
+import Searchbar from "./Searchbar";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 class TheNavbar extends Component {
+  state = {
+    users: [],
+  };
+
+  fetchUsers() {
+    axios.get(`${process.env.REACT_APP_API_URL}/user`).then((response) => {
+      this.setState({ users: response.data });
+    });
+  }
+
+  componentDidMount() {
+    this.fetchUsers();
+  }
+
   render() {
     const { user, logout, isLoggedin } = this.props;
     return (
@@ -61,7 +70,7 @@ class TheNavbar extends Component {
                 <Link to="/login">
                   <p className="btn-nav">Login</p>
                 </Link>
-                
+
                 <Link to="/signup">
                   <p className="btn-nav">Sign Up</p>
                 </Link>
@@ -69,12 +78,9 @@ class TheNavbar extends Component {
             )}
           </Nav>
           <Link to={"/findApro"}>
-          <Nav.Link href="#link">Find a professional</Nav.Link>
+            <Nav.Link href="#link">Find a professional</Nav.Link>
           </Link>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-primary">Search</Button>
-          </Form>
+          <Searchbar allUsers={this.state.users}/>
         </Navbar>
       </div>
     );

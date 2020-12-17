@@ -16,23 +16,25 @@ class UserManage extends Component {
   }
 
   render() {
-    const { name, technologies, photo } = this.props.portfolioUserData;
-    
-    
+   
     return (
       <div>
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={photo} />
-          <Card.Body>
-            <Card.Title>{name}</Card.Title>
-            <Card.Text>
-            {technologies}
-            </Card.Text>
-            <Link to={`/pro/${this.props.user._id}`}>
-            <Button variant="primary">check it</Button>
-             </Link>
-          </Card.Body>
-        </Card>
+        {this.props.ListUser.map((e) => {
+          return (
+            <>
+              <Card style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={e.photo} />
+                <Card.Body>
+                  <Card.Title>{e.name}</Card.Title>
+                  <Card.Text>{e.technologies}</Card.Text>
+                  <Link to={`/pro/${e._id}`}>
+                    <Button variant="primary">check it</Button>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </>
+          );
+        })}
       </div>
     );
   }

@@ -33,7 +33,7 @@ class UserAccount extends Component {
         `${process.env.REACT_APP_API_URL}/user/delete/${this.props.user._id}`,
         { withCredentials: true }
       )
-      .then((res) => {
+      .then((res) => { this.props.logout()
         this.props.history.push('/');
       });
   }

@@ -15,7 +15,7 @@ class PublicProfile extends Component {
   getUserData = () => {
     console.log("this.props.user", this.props.user);
     axios
-      .get(`${process.env.REACT_APP_API_URL}/user/${this.props.user._id}`, {
+      .get(`${process.env.REACT_APP_API_URL}/user/${this.props.match.params.id}`, {
         withCredentials: true,
       })
       .then((res) => {

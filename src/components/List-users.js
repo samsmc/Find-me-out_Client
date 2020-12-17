@@ -28,14 +28,11 @@ class ListUsers extends Component {
     this.fetchUsers();
   }
 
-  renderUser(userData) {
-    return <UserManage refresh={this.refresh} portfolioUserData={userData} />;
-  }
-
+ 
   render() {
     return (
       <div className="container-page">
-        {this.state.users.map((event) => this.renderUser(event))}
+       <UserManage refresh={this.refresh} ListUser={this.state.users}/>;
       </div>
     );
   }
