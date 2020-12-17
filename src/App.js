@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Switch, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
+import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -14,21 +14,23 @@ import PrivateRoute from "./components/PrivateRoute";
 import UserDetailsForm from "./components/UserDetailsForm";
 import PublicProfile from "./components/PublicProfile";
 import ListUsers from "./components/List-users";
+import history from './history'
 
 function App() {
   return (
     <AuthProvider>
-      <Navbar />
+      <Navigation />
 
-      <Switch>
+      <Router history={history}>
         <Route exact path="/" component={Home} />
         <AnonRoute exact path="/signup" component={Signup} />
         <AnonRoute exact path="/login" component={Login} />
         <PrivateRoute exact path="/user/userDetail" component={UserDetailsForm} />
         <PrivateRoute exact path="/private" component={UserAccount} />
         <Route exact path="/pro/:id" component={PublicProfile} />
+        <Route exact path="/findApro/:name" component={ListUsers} />
         <Route exact path="/findApro" component={ListUsers} />
-      </Switch>
+      </Router>
     </AuthProvider>
   );
 }

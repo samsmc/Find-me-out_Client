@@ -18,9 +18,18 @@ class ListUsers extends Component {
     this.fetchUsers();
   }
 
+
   fetchUsers() {
     axios.get(`${process.env.REACT_APP_API_URL}/user`).then((response) => {
-      this.setState({ users: response.data });
+      const name = this.props.match.params.name;
+      if (name) {
+       this.setState({ users: response.data.filter((user) => {
+        return user.name.toLowerCase().indexOf(name) > -1
+        }) 
+      })
+      } else {
+        this.setState({ users: response.data });
+      }
     });
   }
 
@@ -32,7 +41,7 @@ class ListUsers extends Component {
   render() {
     return (
       <div className="container-page">
-       <UserManage refresh={this.refresh} ListUser={this.state.users}/>;
+       <UserManage refresh={this.refresh} ListUser={this.state.users}/>
       </div>
     );
   }

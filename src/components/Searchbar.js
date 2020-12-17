@@ -1,27 +1,38 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { FormControl, Form, Button } from "react-bootstrap";
+import history from '../history'
 
 export default class Searchbar extends Component {
 
-    state = {
-        users: [],
+  constructor(props) {
+    
+    super(props);
+    this.state = {
+        searchValue: '',
       }
+    }
 
-      /* FindUser = () => {
-        const names = {this.props.name}
-        const nameFilter = names.filter(names => word.length > 6);
-        return()
-      } */
-      
+    // findApro/${searchValue}
+
+    handleChange = (event) => {
+      this.setState({searchValue: event.target.value})
+
+    }
+
+    handleSubmit = (event) => {
+      event.preventDefault()
+      history.push(`/findApro/${this.state.searchValue}`);
+    }
+
       render() {
-        console.log(this.props.allUsers)
+        // console.log('ALLUSERS PROPS', this.props.allUsers);
     return (
       <div>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-primary">Search</Button>
-          {/* <FindUser /> */}
-        </Form>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" value={this.state.searchValue} onChange={this.handleChange} placeholder="Search" className="mr-sm-2" />
+          <Button type="submit" variant="outline-primary">Search</Button>
+        </form>
       </div>
     );
   }

@@ -5,7 +5,7 @@ import axios from "axios";
 import Searchbar from "./Searchbar";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-class TheNavbar extends Component {
+class Navigation extends Component {
   state = {
     users: [],
   };
@@ -87,4 +87,4 @@ class TheNavbar extends Component {
   }
 }
 
-export default withAuth(TheNavbar);
+export default withAuth(Navigation);
