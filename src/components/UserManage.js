@@ -19,7 +19,7 @@ class UserManage extends Component {
    
     return (
       <div>
-        {this.props.ListUser.map((e) => {
+      {this.props.ListUser ? this.props.ListUser.map((e) => {
           return (
             <>
               <Card style={{ width: "18rem" }}>
@@ -34,7 +34,8 @@ class UserManage extends Component {
               </Card>
             </>
           );
-        })}
+        }) : <h3>Users are Loading</h3>}
+    
       </div>
     );
   }

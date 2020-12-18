@@ -19,20 +19,16 @@ class ListUsers extends Component {
   }
 
 
-  fetchUsers() {
-    axios.get(`${process.env.REACT_APP_API_URL}/user`).then((response) => {
-      /* const name = this.props.match.params.name;
-      const userState = this.state.users */
-
-     
-       this.setState({ users: response.data.filter((user) => {
-        return user.name.toLowerCase().indexOf(name) > -1
-        }) 
-      
-      } else {
-        this.setState({ users: response.data });
-      } */
-    });
+  fetchUsers = async ()  => {
+    try{
+    let response = await axios.get(`${process.env.REACT_APP_API_URL}/user`);
+    this.setState({
+      users: response.data
+    })
+    } catch(err) {
+      console.error(err);
+    }
+  
   }
 
   refresh() {

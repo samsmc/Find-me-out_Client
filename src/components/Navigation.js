@@ -10,10 +10,14 @@ class Navigation extends Component {
     users: [],
   };
 
-  fetchUsers() {
-    axios.get(`${process.env.REACT_APP_API_URL}/user`).then((response) => {
+  fetchUsers = async () => {
+    try{
+    let response = await axios.get(`${process.env.REACT_APP_API_URL}/user`)
       this.setState({ users: response.data });
-    });
+    }
+    catch(err) {
+      console.error(err);
+    }
   }
 
   componentDidMount() {
@@ -80,7 +84,7 @@ class Navigation extends Component {
           <Link to={"/findApro"}>
             <Nav.Link href="#link">Find a professional</Nav.Link>
           </Link>
-          <Searchbar allUsers={this.state.users}/>
+          <Searchbar allUsers={this.state.users && this.state.users}/>
         </Navbar>
       </div>
     );
