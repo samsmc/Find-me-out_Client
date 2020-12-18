@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../lib/AuthProvider";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import AlertDelete from "../components/AlertDelete";
 
 class UserAccount extends Component {
   constructor() {
@@ -9,7 +10,6 @@ class UserAccount extends Component {
     this.state = {
       userInfo: {},
     };
-    this.deleteUser = this.deleteUser.bind(this);
   }
 
   getId() {
@@ -27,20 +27,7 @@ class UserAccount extends Component {
     this.getId();
   }
 
-  deleteUser() {
-    axios
-      .delete(
-        `${process.env.REACT_APP_API_URL}/user/delete/${this.props.user._id}`,
-        { withCredentials: true }
-      )
-      .then((res) => { this.props.logout()
-        this.props.history.push('/');
-      });
-  }
-
   render() {
-    //const { user } = this.props;
-
     return (
       <div>
         <section className="signup">
@@ -55,7 +42,7 @@ class UserAccount extends Component {
                   <img
                     alt="avatar_img"
                     src={this.state.userInfo.photo}
-                    id="circle-img"
+                    id="profilePhoto"
                     style={{ borderRadius: 200 }}
                   />
                 </div>
@@ -77,11 +64,7 @@ class UserAccount extends Component {
                     <h6 className="btn-user">View Public Profile</h6>
                   </Link>
                 </div>
-                <div>
-                  <button className="btn-delete" onClick={this.deleteUser}>
-                    Delete my account
-                  </button>
-                </div>
+                <AlertDelete />
               </div>
               <div className="signup-image">
                 <figure>
