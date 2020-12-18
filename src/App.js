@@ -14,13 +14,14 @@ import PrivateRoute from "./components/PrivateRoute";
 import UserDetailsForm from "./components/UserDetailsForm";
 import PublicProfile from "./components/PublicProfile";
 import ListUsers from "./components/List-users";
+import Footer from "./components/Footer";
 
 
 function App() {
   return (
     <AuthProvider>
       <Navigation />
-
+      
       <Switch>
         <Route exact path="/" component={Home} />
         <AnonRoute exact path="/signup" component={Signup} />
@@ -29,8 +30,8 @@ function App() {
         <PrivateRoute exact path="/private" component={UserAccount} />
         <Route exact path="/pro/:id" component={PublicProfile} />
         <Route exact path="/findApro" component={ListUsers} />
-        <Route exact path="/findApro/:name" component={ListUsers} />
       </Switch>
+      <Footer />
     </AuthProvider>
   );
 }

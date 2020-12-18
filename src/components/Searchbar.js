@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FormControl, Form, Button } from "react-bootstrap";
-import axios from "axios";
+
 
 let Searchbar = (props) => {
   let [searchValue, setSearchValue] = useState("");
@@ -22,7 +20,7 @@ let Searchbar = (props) => {
   }, [searchValue]);
   return (
     <>
-      <FormControl
+      <input
         type="text"
         value={searchValue}
         onChange={(e) => setSearchValue(e.target.value)}

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
-import Searchbar from "./Searchbar";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 class Navigation extends Component {
@@ -11,14 +10,13 @@ class Navigation extends Component {
   };
 
   fetchUsers = async () => {
-    try{
-    let response = await axios.get(`${process.env.REACT_APP_API_URL}/user`)
+    try {
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/user`);
       this.setState({ users: response.data });
-    }
-    catch(err) {
+    } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   componentDidMount() {
     this.fetchUsers();
@@ -84,7 +82,6 @@ class Navigation extends Component {
           <Link to={"/findApro"}>
             <Nav.Link href="#link">Find a professional</Nav.Link>
           </Link>
-          <Searchbar allUsers={this.state.users && this.state.users}/>
         </Navbar>
       </div>
     );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import UserManage from "./UserManage";
 import { withAuth } from "../lib/AuthProvider";
+import Searchbar from "./Searchbar";
 
 class ListUsers extends Component {
   constructor() {
@@ -38,9 +39,12 @@ class ListUsers extends Component {
  
   render() {
     return (
+      <>
+      <Searchbar allUsers={this.state.users && this.state.users}/>
       <div className="container-page">
        <UserManage refresh={this.refresh} ListUser={this.state.users}/>
       </div>
+      </>
     );
   }
 }
