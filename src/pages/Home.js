@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 function Home() {
   return (
     <div className="">
@@ -13,15 +12,20 @@ function Home() {
               <form method="POST" className="register-form" id="register-form">
                 <div className="form-group">
                   <h4>
-                    To the best place to find new
-                    <span style={{ textDecoration: "underline" }}> pro</span>
-                    grammers!
+                    Are you a <span style={{ textDecoration: "underline" }}> pro</span>
+                    grammer? So here is the best place for you to build your
+                    profile with all the important information about you!
                   </h4>
                 </div>
 
                 <div className="form-group form-button">
-                <Link to="/login">
-                  <h6 className="form-submit" style={{backgroundColor:"#fe6225"}} >Start Now</h6>
+                  <Link to="/login">
+                    <h6
+                      className="form-submit"
+                      style={{ backgroundColor: "#fe6225" }}
+                    >
+                      Start Now
+                    </h6>
                   </Link>
                 </div>
               </form>

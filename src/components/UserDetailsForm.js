@@ -154,10 +154,14 @@ class UserDetails extends Component {
                 <h6>Profile picture</h6>
               </div>
               <img
-                width={150}
-                height={150}
+                maxWidth={50}
                 alt="avatar_img"
                 src={this.state.photo}
+                style={{
+                    backgroundImage:
+                      "url('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')",
+                    backgroundSize: "cover",
+                  }}
               />
 
               <div className="form-group files color">
@@ -176,6 +180,7 @@ class UserDetails extends Component {
               <div className="form-group">
                 <h6>Name</h6>
                 <input
+                placeholder="Full Name"
                   type="text"
                   name="name"
                   value={this.state.name}
@@ -186,6 +191,7 @@ class UserDetails extends Component {
               <div className="form-group">
                 <h6>Position</h6>
                 <input
+                placeholder="eg. Frontend/Backend Developer"
                   data-msg="form.characters_remaining"
                   data-max={30}
                   type="text"
@@ -198,6 +204,7 @@ class UserDetails extends Component {
               <div className="form-group">
                 <h6> Technologies</h6>
                 <input
+                placeholder="eg. HTML, CSS, JS, React, etc."
                   data-msg="form.characters_remaining"
                   data-max={185}
                   type="text"
