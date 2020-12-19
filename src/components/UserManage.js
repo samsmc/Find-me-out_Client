@@ -4,28 +4,21 @@ import { Link } from "react-router-dom";
 
 
 class UserManage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isAdmin: false,
-    };
-  }
 
-  componentDidMount() {
-    this.setState({ isAdmin: this.props.isAdmin });
-  }
 
   render() {
+    const listUser = this.props.listUser;
+
     return (
-      <div className="card">
-        {this.props.ListUser ? (
-          this.props.ListUser.map((e) => {
+      <div>
+        {listUser ? (
+          listUser.map((e) => {
             return (
-              <div  style={{ width: "18rem" }}>
+              <div className="card" style={{ width: "18rem" }}>
                 <img
                   className="card-img-top"
                   src={e.photo}
-                  alt="Card image cap"
+                  alt="img"
                 />
                 <div className="card-body">
                   <h5 className="card-title">{e.name}</h5>
@@ -46,9 +39,6 @@ class UserManage extends Component {
     );
   }
 }
-UserManage.defaultProps = {
-  refresh: () => null,
-  isAdmin: false,
-};
+
 
 export default withAuth(UserManage);

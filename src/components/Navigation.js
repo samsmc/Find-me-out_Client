@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import axios from "axios";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
@@ -53,7 +53,6 @@ class Navigation extends Component {
                   <NavDropdown.Divider />
                   <NavDropdown.Item>
                     <button className="btn-nav" onClick={logout}>
-                      <Redirect to="/" />
                       Logout
                     </button>
                   </NavDropdown.Item>
