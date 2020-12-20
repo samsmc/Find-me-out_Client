@@ -143,6 +143,12 @@ breakpoint {
   breakpoint {
     max-width: 24%;
   }
+  .grid {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
 }
 
 #circle-img {
@@ -229,7 +235,8 @@ breakpoint {
 }
 
 .profile-column {
-  margin-right: 200px;
+  width: 200px;
+  margin-right: 150px;
   margin-left: 90px;
   text-align: center;
 }
@@ -255,7 +262,7 @@ breakpoint {
 }
 
 .profile-btn {
-  margin-top: 170px;
+  margin-top: 160px;
 }
 
 .files input {
@@ -331,7 +338,7 @@ breakpoint {
   cursor: pointer;
 }
 
-.container-filter-users-searchbar {
+/* .container-filter-users-searchbar {
   position: absolute;
   top: 200px;
   left: 350px;
@@ -362,7 +369,7 @@ breakpoint {
 .container-filter-users-searchbar a {
   position: relative;
   top: 50px;
-}
+} */
 
 .cardFlex {
   display: flex;
@@ -379,15 +386,14 @@ footer p {
   color: #ccc;
 }
 
-/* .box{
+.box{
   display: flex;
   overflow: hidden;
   height: auto;
   width: auto;
-  max-height: 35vh;
   -webkit-box-shadow:0px 12px 18px -6pz rgba(0,0,0,0.3);
   box-shadow: 0px 12px 18px -6px rgba(0,0,0,0.3);
-} */
+}
 .box {
   margin: 20px
 }

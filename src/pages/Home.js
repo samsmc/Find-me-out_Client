@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="">
+    <div>
       <section className="signup">
         <div className="container-page">
           <div className="signup-content">
@@ -11,11 +11,11 @@ function Home() {
               <h2 className="form-title">Welcome</h2>
               <form method="POST" className="register-form" id="register-form">
                 <div className="form-group">
-                  <h4>
+                  <h3>
                     Are you a <span style={{ textDecoration: "underline" }}> pro</span>
                     grammer? So here is the best place for you to build your
                     profile with all the important information about you!
-                  </h4>
+                  </h3>
                 </div>
 
                 <div className="form-group form-button">

@@ -34,9 +34,9 @@ class UserAccount extends Component {
           <div className="container-page">
             <div className="signup-content">
               <div className="signup-form">
-                <h3>
+                <h2>
                   Hello <b>{this.state.userInfo.name}</b>,
-                </h3>
+                </h2>
                 <br></br>
                 <div>
                   <img
@@ -51,14 +51,14 @@ class UserAccount extends Component {
                     }}
                   />
                 </div>
-                <h5>
+                <h4>
                   <b>{this.state.userInfo.email}</b>
-                </h5>
+                </h4>
                 <br></br>
-                <h6>
+                <h4>
                   Here you can personalize your profile and check all the
                   information you want to display on your public profile.
-                </h6>
+                </h4>
                 <div>
                   <Link to="/user/userDetail">
                     <h6 className="btn-user">Edit profile</h6>

@@ -154,7 +154,7 @@ class UserDetails extends Component {
                 <h6>Profile picture</h6>
               </div>
               <img
-                maxWidth={50}
+                width={200}
                 alt="avatar_img"
                 src={this.state.photo}
                 style={{
@@ -170,8 +170,8 @@ class UserDetails extends Component {
                   name="photo"
                   onChange={this.handleFileUpload}
                 />
-                <span class="helper-message">Upload an image of maxium 2MB.</span>
               </div>
+                <span class="helper-message">Upload an image of maxium 2MB.</span>
 
               <div class="form-group">
                 <ToastContainer />
@@ -204,7 +204,7 @@ class UserDetails extends Component {
               <div className="form-group">
                 <h6> Technologies</h6>
                 <input
-                placeholder="eg. HTML, CSS, JS, React, etc."
+                  placeholder="eg. HTML, CSS, JS, React, etc."
                   data-msg="form.characters_remaining"
                   data-max={185}
                   type="text"
@@ -215,7 +215,7 @@ class UserDetails extends Component {
               </div>
 
               <h6 className="form-group" style={{ color: "grey" }}>
-                <u>Main Projects: </u>
+                <h6>Main Projects: </h6>
                 <p>Select 3 of your best project to be displayed!</p>
               </h6>
 

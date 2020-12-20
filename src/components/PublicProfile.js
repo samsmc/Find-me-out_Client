@@ -176,20 +176,20 @@ class PublicProfile extends Component {
 
               <div className="profile-column">
                 <div className="form-group">
-                  <h4>
+                  <h3>
                     <b>{user.position}</b>
-                  </h4>
+                  </h3>
                 </div>
                 <div
                   className="form-group"
-                  style={{ maxWidth: 105, margin: "auto", marginTop: 45 }}
+                  style={{ maxWidth: 150, margin: "auto", marginTop: 45 }}
                 >
-                  <h5>{user.technologies}</h5>
+                  <h3>{user.technologies}</h3>
                 </div>
                 {isLoggedin ? (
                 <div className="profile-btn">
                   <Link to={"/user/userDetail"}>
-                    <button className="btn-user">back</button>
+                    <button className="btn-user">update your profile</button>
                   </Link>
                 </div>
                 ) : (
