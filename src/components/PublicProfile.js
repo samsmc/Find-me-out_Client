@@ -188,7 +188,7 @@ class PublicProfile extends Component {
                 </div>
                 {isLoggedin ? (
                 <div className="profile-btn">
-                  <Link to={"/user/userDetail"}>
+                  <Link to={"/user/detail"}>
                     <button className="btn-user">update your profile</button>
                   </Link>
                 </div>
