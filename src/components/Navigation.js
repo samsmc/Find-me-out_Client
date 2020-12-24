@@ -42,7 +42,7 @@ class Navigation extends Component {
             <>
               <NavDropdown title={user.name} id="basic-nav-dropdown">
                 <NavDropdown.Item>
-                  <Link to={"/user/detail"}>Edit Profile</Link>
+                  <Link to={"/details"}>Edit Profile</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link to={`/pro/${this.props.user._id}`}>Public Profile</Link>

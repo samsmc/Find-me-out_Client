@@ -26,7 +26,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <AnonRoute exact path="/signup" component={Signup} />
         <AnonRoute exact path="/login" component={Login} />
-        <PrivateRoute exact path="/user/detail" component={UserDetailsForm} />
+        <PrivateRoute exact path="/details" component={UserDetailsForm} />
         <PrivateRoute exact path="/private" component={UserAccount} />
         <Route exact path="/pro/:id" component={PublicProfile} />
         <Route exact path="/findApro" component={ListUsers} />

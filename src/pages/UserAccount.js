@@ -60,7 +60,7 @@ class UserAccount extends Component {
                   information you want to display on your public profile.
                 </h4>
                 <div>
-                  <Link to="/user/detail">
+                  <Link to="/details">
                     <h6 className="btn-user">Edit profile</h6>
                   </Link>
                 </div>
